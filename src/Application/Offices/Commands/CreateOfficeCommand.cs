@@ -1,4 +1,5 @@
 using Application.Common.Dto;
+using Application.Common.Dto.Common;
 using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Common.Validators;
@@ -15,6 +16,7 @@ public class CreateOfficeCommand : IRequest<OfficeDto>
     public required int Id { get; set; }
     public required string NameRu { get; set; }
     public required string NameKg { get; set; }
+    public required List<Identifier> ParentOffices { get; set; }
     
     public class CreateOfficeCommandHandler : IRequestHandler<CreateOfficeCommand, OfficeDto>
     {
@@ -33,7 +35,11 @@ public class CreateOfficeCommand : IRequest<OfficeDto>
 
             _context.Offices.Add(office);
             await _context.SaveChangesAsync(cancellationToken);
-
+            office.ParentOffices = request.ParentOffices.Select(x => new OfficeRelationship
+            {
+                ChildOfficeId = request.Id, ParentOfficeId = x.Id
+            }).ToList();
+            await _context.SaveChangesAsync(cancellationToken);
             if (office.CreatedBy != office.ModifiedBy)
             {
                 throw InvalidCreatedModifiedValuesException.Create(office);

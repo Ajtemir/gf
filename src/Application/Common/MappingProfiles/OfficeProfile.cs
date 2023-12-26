@@ -15,7 +15,10 @@ public class OfficeProfile : Profile
                 string.Join(' ', s.CreatedByUser!.LastName, s.CreatedByUser.FirstName, s.CreatedByUser.PatronymicName)))
             .ForMember(d => d.ModifiedByUser, c => c.MapFrom(s =>
                 string.Join(' ', s.ModifiedByUser!.LastName, s.ModifiedByUser.FirstName,
-                    s.ModifiedByUser.PatronymicName)));
+                    s.ModifiedByUser.PatronymicName)))
+            .ForMember(d => d.ParentOffices, c => c.MapFrom(s => s.ParentOffices.Select(x=>x.ParentOffice)))
+            .ForMember(d => d.ChildOffices, c => c.MapFrom(s => s.ChildOffices.Select(x=>x.ChildOffice)))
+            ;
 
         CreateMap<OfficeDto, Office>()
             .ForMember(d => d.ChildOffices, s => s.Ignore())
