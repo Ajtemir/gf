@@ -17,4 +17,10 @@
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Persistence\ApplicationDBContext.DbSets.cs">
+        <DependentUpon>ApplicationDbContext.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence;
 
-public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int,
+public partial class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int,
         IdentityUserClaim<int>,
         ApplicationUserRole,
         IdentityUserLogin<int>,
@@ -20,22 +20,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
 {
     private readonly IMediator _mediator;
     private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
-
-    public DbSet<Candidate> Candidates { get; set; } = null!;
-    public DbSet<Person> People { get; set; } = null!;
-    public DbSet<Citizen> Citizens { get; set; } = null!;
-    public DbSet<Mother> Mothers { get; set; } = null!;
-    public DbSet<Foreigner> Foreigners { get; set; } = null!;
-    public DbSet<Entity> Entities { get; set; } = null!;
-
-    public DbSet<RewardApplication> RewardApplications { get; set; } = null!;
-    public DbSet<Office> Offices { get; set; } = null!;
-
-    public DbSet<Position> Positions { get; set; } = null!;
-    public DbSet<Citizenship> Citizenships { get; set; } = null!;
-    public DbSet<Reward> Rewards { get; set; } = null!;
-    public DbSet<Education> Educations { get; set; } = null!;
-
+    
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options,
         IMediator mediator,
         AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor) : base(options)
