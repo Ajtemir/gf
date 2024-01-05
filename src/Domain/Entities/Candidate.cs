@@ -8,9 +8,9 @@ namespace Domain.Entities;
 /// </summary>
 public abstract class Candidate : BaseAuditableEntity
 {
-    [ForeignKey(nameof(CandidateTypeNavigation))]
-    public string CandidateType { get; set; } = null!;
-    public CandidateType CandidateTypeNavigation { get; set; } = null!;
+    [ForeignKey(nameof(CandidateType))]
+    public string CandidateTypeId { get; set; } = null!;
+    public CandidateType CandidateType { get; set; } = null!;
     
     public byte[]? Image { get; set; }
     public string? ImageName { get; set; }

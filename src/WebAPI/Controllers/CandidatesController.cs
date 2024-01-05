@@ -37,7 +37,7 @@ public class CandidatesController : ApiControllerBase
             nameof(Mother) => await Mediator.Send(new GetMotherQuery { Id = id }, cancellationToken),
             nameof(Foreigner) => await Mediator.Send(new GetForeignerQuery { Id = id }, cancellationToken),
             nameof(Entity) => await Mediator.Send(new GetEntityQuery { Id = id }, cancellationToken),
-            _ => throw new InvalidEnumArgumentException($"Invalid {nameof(Candidate.CandidateType)}: {candidateType}")
+            _ => throw new InvalidEnumArgumentException($"Invalid {nameof(Candidate.CandidateTypeId)}: {candidateType}")
         };
 
         return Ok(candidateDto);

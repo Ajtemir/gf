@@ -12,7 +12,7 @@ public class CandidateConfiguration : IEntityTypeConfiguration<Candidate>
         // builder.UseTphMappingStrategy();
         
         builder.ToTable("candidates");
-        builder.HasDiscriminator(x => x.CandidateType);
+        builder.HasDiscriminator(x => x.CandidateTypeId);
 
         builder.HasQueryFilter(x => x.CreatedByUser!.IsDeleted == false && x.ModifiedByUser!.IsDeleted == false);
 

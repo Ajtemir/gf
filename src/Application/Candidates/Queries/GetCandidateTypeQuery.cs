@@ -24,7 +24,7 @@ public class GetCandidateTypeQuery : IRequest<string>
         public async Task<string> Handle(GetCandidateTypeQuery request, CancellationToken cancellationToken)
         {
             var candidateType = await _context.Candidates.Where(x => x.Id == request.Id)
-                .Select(x => x.CandidateType)
+                .Select(x => x.CandidateTypeId)
                 .FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
             if (candidateType is null)

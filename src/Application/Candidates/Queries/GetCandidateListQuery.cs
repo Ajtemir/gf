@@ -23,7 +23,7 @@ public class GetCandidateListQuery : IRequest<IEnumerable<CandidateWithoutImageD
                 select new CandidateWithoutImageDto()
                 {
                     Id = candidate.Id,
-                    CandidateType = candidate.CandidateType,
+                    CandidateType = candidate.CandidateTypeId,
                     Name = candidate is Entity ? ((Entity)candidate).NameRu :
                            candidate is Person ? string.Join(' ', ((Person)candidate).LastName, ((Person)candidate).FirstName, ((Person)candidate).PatronymicName) :
                            "",
