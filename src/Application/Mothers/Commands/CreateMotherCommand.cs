@@ -40,13 +40,18 @@ public class CreateMotherCommand : IRequest<MotherDto>
         public async Task<MotherDto> Handle(CreateMotherCommand request, CancellationToken cancellationToken)
         {
             var image = Base64Helper.ConvertImageFromBase64(request.Image);
-            
+            var member = await _context.Members.FirstOrDefaultAsync(x => x.Pin == request.Pin, cancellationToken: cancellationToken);
+            if (member == null)
+            {
+                member = new Member { Pin = request.Pin };
+                _context.Members.Add(member);
+                await _context.SaveChangesAsync(cancellationToken);
+            }
             var mother = new Mother
             {
                 LastName = request.LastName,
                 FirstName = request.FirstName,
                 PatronymicName = request.PatronymicName,
-                Pin = request.Pin,
                 PassportNumber = request.PassportNumber,
                 Gender = Gender.Female,
                 BirthDate = request.BirthDate,
@@ -55,8 +60,9 @@ public class CreateMotherCommand : IRequest<MotherDto>
                 ActualAddress = request.ActualAddress,
                 ImageName = request.ImageName,
                 Image = image,
+                MemberId = member.Id,
             };
-
+            
             _context.Mothers.Add(mother);
             await _context.SaveChangesAsync(cancellationToken);
 

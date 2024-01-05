@@ -41,7 +41,6 @@ public class UpdateMotherCommand : ICommand
             mother.LastName = request.LastName;
             mother.FirstName = request.FirstName;
             mother.PatronymicName = request.PatronymicName;
-            mother.Pin = request.Pin;
             mother.PassportNumber = request.PassportNumber;
             mother.BirthDate = request.BirthDate;
             mother.DeathDate = request.DeathDate;

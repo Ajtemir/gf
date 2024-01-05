@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Domain.Entities;
 
 public class CandidateType
 {
-    public int Id { get; set; }
+    [Key]
+    public required string NameEn { get; set; }
     public required string NameRu { get; set; }
     public required string NameKg { get; set; }
     public List<CandidateTypesDocumentTypes> CandidateTypesDocumentTypes { get; set; } = new();

@@ -47,13 +47,19 @@ public class CreateCitizenCommand : IRequest<CitizenDto>
         public async Task<CitizenDto> Handle(CreateCitizenCommand request, CancellationToken cancellationToken)
         {
             var image = Base64Helper.ConvertImageFromBase64(request.Image);
-            
+            var member = await _context.Members.FirstOrDefaultAsync(x => x.Pin == request.Pin, cancellationToken: cancellationToken);
+            if (member == null)
+            {
+                member = new Member { Pin = request.Pin };
+                _context.Members.Add(member);
+                await _context.SaveChangesAsync(cancellationToken);
+            }
             var citizen = new Citizen
             {
                 LastName = request.LastName,
                 FirstName = request.FirstName,
                 PatronymicName = request.PatronymicName,
-                Pin = request.Pin,
+                MemberId = member.Id,
                 PassportNumber = request.PassportNumber,
                 Gender = request.Gender,
                 BirthDate = request.BirthDate,

@@ -31,6 +31,7 @@ public interface IApplicationDbContext
     DbSet<Citizenship> Citizenships { get; }
     DbSet<Reward> Rewards { get; }
     DbSet<Education> Educations { get; }
+    DbSet<Member> Members { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

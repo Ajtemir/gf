@@ -53,7 +53,6 @@ public class UpdateCitizenCommand : ICommand
             citizen.LastName = request.LastName;
             citizen.FirstName = request.FirstName;
             citizen.PatronymicName = request.PatronymicName;
-            citizen.Pin = request.Pin;
             citizen.PassportNumber = request.PassportNumber;
             citizen.Gender = request.Gender;
             citizen.BirthDate = request.BirthDate;
