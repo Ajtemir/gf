@@ -19,6 +19,6 @@ public partial class ApplicationDbContext
     public DbSet<Citizenship> Citizenships { get; set; } = null!;
     public DbSet<Reward> Rewards { get; set; } = null!;
     public DbSet<Education> Educations { get; set; } = null!;
-    public DbSet<Member> Members { get; }
+    public DbSet<Member> Members { get; set; } = null!;
     public DbSet<RewardApplicationStatus> RewardApplicationStatuses { get; set; } = null!;
 }

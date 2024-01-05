@@ -32,6 +32,8 @@ public interface IApplicationDbContext
     DbSet<Reward> Rewards { get; }
     DbSet<Education> Educations { get; }
     DbSet<Member> Members { get; }
+    public DbSet<RewardApplicationStatus> RewardApplicationStatuses { get; }
+
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
