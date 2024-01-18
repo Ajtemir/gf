@@ -21,4 +21,12 @@ public partial class ApplicationDbContext
     public DbSet<Education> Educations { get; set; } = null!;
     public DbSet<Member> Members { get; set; } = null!;
     public DbSet<RewardApplicationStatus> RewardApplicationStatuses { get; set; } = null!;
+    public DbSet<PinAbsenceReason> PinAbsenceReasons { get; set; } = null!;
+    public DbSet<Document> Documents { get; set; } = null!;
+    public DbSet<DocumentType> DocumentTypes { get; set; } = null!;
+    public DbSet<IssuedReward> IssuedRewards { get; set; } = null!;
+    public DbSet<CandidateType> CandidateTypes { get; set; } = null!;
+    public DbSet<CandidateTypesDocumentTypes> CandidateTypesDocumentTypes { get; set; } = null!;
+    public DbSet<MothersChildren> MothersChildren { get; set; } = null!;
+    
 }
