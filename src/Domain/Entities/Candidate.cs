@@ -16,6 +16,7 @@ public abstract class Candidate : BaseAuditableEntity
     public string? ImageName { get; set; }
     public int MemberId { get; set; }
     public Member Member { get; set; } = null!;
+    [NotMapped]
     public string? Pin => Member.Pin;
     
     public ApplicationUser? CreatedByUser { get; set; }

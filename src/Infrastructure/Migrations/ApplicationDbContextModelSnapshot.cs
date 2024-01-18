@@ -1469,11 +1469,11 @@ namespace Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CandidateType")
+                    b.Property<string>("CandidateTypeId")
                         .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)")
-                        .HasColumnName("candidate_type");
+                        .HasColumnName("candidate_type_id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
@@ -1493,6 +1493,10 @@ namespace Infrastructure.Migrations
                         .HasColumnType("character varying(128)")
                         .HasColumnName("image_name");
 
+                    b.Property<int>("MemberId")
+                        .HasColumnType("integer")
+                        .HasColumnName("member_id");
+
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("modified_at");
@@ -1503,15 +1507,130 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CandidateTypeId");
+
                     b.HasIndex("CreatedBy");
+
+                    b.HasIndex("MemberId");
 
                     b.HasIndex("ModifiedBy");
 
                     b.ToTable("candidates", "main");
 
-                    b.HasDiscriminator<string>("CandidateType").HasValue("Candidate");
+                    b.HasDiscriminator<string>("CandidateTypeId").HasValue("Candidate");
 
                     b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("Domain.Entities.CandidateType", b =>
+                {
+                    b.Property<string>("NameEn")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NameKg")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("NameRu")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("NameEn");
+
+                    b.ToTable("CandidateType", "main");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CandidateTypesDocumentTypes", b =>
+                {
+                    b.Property<string>("CandidateTypeId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("DocumentTypeId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("CandidateTypeId", "DocumentTypeId");
+
+                    b.HasIndex("DocumentTypeId");
+
+                    b.ToTable("CandidateTypesDocumentTypes", "main");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Document", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("Bytes")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<int>("DocumentTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Extension")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("RewardApplicationId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocumentTypeId");
+
+                    b.HasIndex("RewardApplicationId");
+
+                    b.ToTable("Document", "main");
+                });
+
+            modelBuilder.Entity("Domain.Entities.DocumentType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NameKg")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("NameRu")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("Required")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DocumentType", "main");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Member", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Pin")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Pin")
+                        .IsUnique();
+
+                    b.ToTable("Members", "main");
                 });
 
             modelBuilder.Entity("Domain.Entities.Office", b =>
@@ -1570,6 +1689,29 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ParentOfficeId");
 
                     b.ToTable("office_relationships", "main");
+                });
+
+            modelBuilder.Entity("Domain.Entities.PinAbsenceReason", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MemberId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberId")
+                        .IsUnique();
+
+                    b.ToTable("PinAbsenceReason", "main");
                 });
 
             modelBuilder.Entity("Domain.Entities.Reward", b =>
@@ -1639,6 +1781,16 @@ namespace Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CandidateTypeId")
+                        .HasColumnType("integer")
+                        .HasColumnName("candidate_type_id");
+
+                    b.Property<string>("CandidateTypeNameEn")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)")
+                        .HasColumnName("candidate_type_name_en");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
@@ -1676,6 +1828,8 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CandidateTypeNameEn");
+
                     b.HasIndex("CreatedBy");
 
                     b.HasIndex("ModifiedBy");
@@ -1698,6 +1852,12 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("ChangeDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("OfficeId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("PreviousStatusId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("RewardApplicationId")
                         .HasColumnType("integer");
 
@@ -1705,6 +1865,10 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OfficeId");
+
+                    b.HasIndex("PreviousStatusId");
 
                     b.HasIndex("RewardApplicationId");
 
@@ -1894,13 +2058,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("character varying(10)")
                         .HasColumnName("passport_number");
 
-                    b.Property<string>("Pin")
-                        .ValueGeneratedOnUpdateSometimes()
-                        .HasMaxLength(14)
-                        .HasColumnType("character(14)")
-                        .HasColumnName("pin")
-                        .IsFixedLength();
-
                     b.Property<string>("RegisteredAddress")
                         .IsRequired()
                         .ValueGeneratedOnUpdateSometimes()
@@ -1963,13 +2120,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("character varying(10)")
                         .HasColumnName("passport_number");
 
-                    b.Property<string>("Pin")
-                        .ValueGeneratedOnUpdateSometimes()
-                        .HasMaxLength(14)
-                        .HasColumnType("character(14)")
-                        .HasColumnName("pin")
-                        .IsFixedLength();
-
                     b.Property<string>("RegisteredAddress")
                         .IsRequired()
                         .ValueGeneratedOnUpdateSometimes()
@@ -2018,9 +2168,21 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Candidate", b =>
                 {
+                    b.HasOne("Domain.Entities.CandidateType", "CandidateType")
+                        .WithMany()
+                        .HasForeignKey("CandidateTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Domain.Entities.ApplicationUser", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedBy")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Member", "Member")
+                        .WithMany("Candidates")
+                        .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2030,9 +2192,47 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("CandidateType");
+
                     b.Navigation("CreatedByUser");
 
+                    b.Navigation("Member");
+
                     b.Navigation("ModifiedByUser");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CandidateTypesDocumentTypes", b =>
+                {
+                    b.HasOne("Domain.Entities.CandidateType", "CandidateType")
+                        .WithMany("CandidateTypesDocumentTypes")
+                        .HasForeignKey("CandidateTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.DocumentType", "DocumentType")
+                        .WithMany("CandidateTypesDocumentTypes")
+                        .HasForeignKey("DocumentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CandidateType");
+
+                    b.Navigation("DocumentType");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Document", b =>
+                {
+                    b.HasOne("Domain.Entities.DocumentType", "DocumentType")
+                        .WithMany()
+                        .HasForeignKey("DocumentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.RewardApplication", null)
+                        .WithMany("Documents")
+                        .HasForeignKey("RewardApplicationId");
+
+                    b.Navigation("DocumentType");
                 });
 
             modelBuilder.Entity("Domain.Entities.Office", b =>
@@ -2073,6 +2273,17 @@ namespace Infrastructure.Migrations
                     b.Navigation("ParentOffice");
                 });
 
+            modelBuilder.Entity("Domain.Entities.PinAbsenceReason", b =>
+                {
+                    b.HasOne("Domain.Entities.Member", "Member")
+                        .WithOne("PinAbsenceReason")
+                        .HasForeignKey("Domain.Entities.PinAbsenceReason", "MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
+                });
+
             modelBuilder.Entity("Domain.Entities.Reward", b =>
                 {
                     b.HasOne("Domain.Entities.ApplicationUser", "CreatedByUser")
@@ -2094,6 +2305,12 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.RewardApplication", b =>
                 {
+                    b.HasOne("Domain.Entities.CandidateType", "CandidateType")
+                        .WithMany()
+                        .HasForeignKey("CandidateTypeNameEn")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Domain.Entities.ApplicationUser", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedBy")
@@ -2118,6 +2335,8 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("CandidateType");
+
                     b.Navigation("CreatedByUser");
 
                     b.Navigation("ModifiedByUser");
@@ -2129,11 +2348,25 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.RewardApplicationStatus", b =>
                 {
+                    b.HasOne("Domain.Entities.Office", "Office")
+                        .WithMany()
+                        .HasForeignKey("OfficeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.RewardApplicationStatus", "PreviousStatus")
+                        .WithMany()
+                        .HasForeignKey("PreviousStatusId");
+
                     b.HasOne("Domain.Entities.RewardApplication", "RewardApplication")
                         .WithMany("RewardApplicationStatuses")
                         .HasForeignKey("RewardApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Office");
+
+                    b.Navigation("PreviousStatus");
 
                     b.Navigation("RewardApplication");
                 });
@@ -2246,6 +2479,23 @@ namespace Infrastructure.Migrations
                     b.Navigation("Applications");
                 });
 
+            modelBuilder.Entity("Domain.Entities.CandidateType", b =>
+                {
+                    b.Navigation("CandidateTypesDocumentTypes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.DocumentType", b =>
+                {
+                    b.Navigation("CandidateTypesDocumentTypes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Member", b =>
+                {
+                    b.Navigation("Candidates");
+
+                    b.Navigation("PinAbsenceReason");
+                });
+
             modelBuilder.Entity("Domain.Entities.Office", b =>
                 {
                     b.Navigation("ChildOffices");
@@ -2257,6 +2507,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.RewardApplication", b =>
                 {
+                    b.Navigation("Documents");
+
                     b.Navigation("RewardApplicationStatuses");
                 });
 #pragma warning restore 612, 618

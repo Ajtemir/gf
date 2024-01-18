@@ -11,7 +11,6 @@ public class CitizenConfiguration : IEntityTypeConfiguration<Citizen>
     {
         builder.ToTable("candidates");
 
-        builder.Property(x => x.Pin).HasMaxLength(14).IsFixedLength().HasColumnName(SnakeNamingConvention.GetSnakeName(nameof(Citizen.Pin)));
         builder.Property(x => x.PassportNumber).HasMaxLength(10).HasColumnName(SnakeNamingConvention.GetSnakeName(nameof(Citizen.PassportNumber)));
         
         builder.Property(c => c.RegisteredAddress)

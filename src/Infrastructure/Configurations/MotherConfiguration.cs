@@ -11,7 +11,6 @@ public class MotherConfiguration : IEntityTypeConfiguration<Mother>
     {
         builder.ToTable("candidates");
 
-        builder.Property(x => x.Pin).HasMaxLength(14).IsFixedLength().HasColumnName(SnakeNamingConvention.GetSnakeName(nameof(Mother.Pin)));
         builder.Property(x => x.PassportNumber).HasMaxLength(10).HasColumnName(SnakeNamingConvention.GetSnakeName(nameof(Mother.PassportNumber)));
         
         builder.Property(m => m.RegisteredAddress)
