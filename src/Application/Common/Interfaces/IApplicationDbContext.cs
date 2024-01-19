@@ -32,8 +32,14 @@ public interface IApplicationDbContext
     DbSet<Reward> Rewards { get; }
     DbSet<Education> Educations { get; }
     DbSet<Member> Members { get; }
-    public DbSet<RewardApplicationStatus> RewardApplicationStatuses { get; }
-
+    DbSet<RewardApplicationStatus> RewardApplicationStatuses { get; }
+    DbSet<PinAbsenceReason> PinAbsenceReasons { get; }
+    DbSet<Document> Documents { get; }
+    DbSet<DocumentType> DocumentTypes { get; } 
+    DbSet<IssuedReward> IssuedRewards { get; } 
+    DbSet<CandidateType> CandidateTypes { get; } 
+    DbSet<CandidateTypesDocumentTypes> CandidateTypesDocumentTypes { get; } 
+    DbSet<MothersChildren> MothersChildren { get; } 
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

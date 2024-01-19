@@ -65,8 +65,9 @@ public class ApplicationDbContextInitializer
         {
             await _roleManager.CreateAsync(new ApplicationRole(role.Name, role.Note));
         }
-
-        await CreateIfNotExistAdmin();
+        var admin = await _userManager.FindByNameAsync(); // todo
+        await _userManager.AddToRolesAsync(admin, new[] { DomainRole.Administrator.Name });
+        // await CreateIfNotExistAdmin();
     }
 
     private async Task CreateIfNotExistAdmin()
@@ -84,10 +85,6 @@ public class ApplicationDbContextInitializer
             };
 
             await _userManager.CreateAsync(admin, "Admin123!");
-            var firstUser = _context.Users.FirstOrDefault(x => x.UserName == "admin")!;
-            firstUser.CreatedBy = 1;
-            firstUser.ModifiedBy = 1;
-            await _context.SaveChangesAsync();
             await _userManager.AddToRolesAsync(admin, new[] { DomainRole.Administrator.Name });
         }
     }

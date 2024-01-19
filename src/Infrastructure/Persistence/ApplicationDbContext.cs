@@ -28,18 +28,7 @@ public partial class ApplicationDbContext : IdentityDbContext<ApplicationUser, A
         _mediator = mediator;
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
     }
-
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        builder.HasDefaultSchema("main");
-        
-        base.OnModelCreating(builder);
-        
-        // Add the Postgres Extension for UUID generation
-        builder.HasPostgresExtension("uuid-ossp");
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
-
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);

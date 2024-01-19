@@ -21,6 +21,27 @@
       <Compile Update="Persistence\ApplicationDBContext.DbSets.cs">
         <DependentUpon>ApplicationDbContext.cs</DependentUpon>
       </Compile>
+      <Compile Update="Persistence\OfficeSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\ApplicationDbContext.OnModelCreating.cs">
+        <DependentUpon>ApplicationDbContext.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\AllSeed.cs">
+        <DependentUpon>ApplicationDbContext.OnModelCreating.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\RoleSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\UserSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\CandidateTypeSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\UserRoleSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

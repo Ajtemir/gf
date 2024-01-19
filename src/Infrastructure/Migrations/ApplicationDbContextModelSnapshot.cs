@@ -1333,6 +1333,16 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", "main");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ConcurrencyStamp = "8425e404-2f2b-467e-b852-77b7762fe0d6",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR",
+                            Note = "Администратор"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.ApplicationUser", b =>
@@ -1357,8 +1367,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(64)
-                        .HasColumnType("character varying(64)");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
@@ -1443,6 +1453,27 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", "main");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c1939d9a-d0c3-4866-81cd-92b82524f704",
+                            CreatedAt = new DateTime(2024, 1, 19, 11, 48, 44, 32, DateTimeKind.Utc).AddTicks(1505),
+                            Email = "Admin@test.ru",
+                            EmailConfirmed = false,
+                            FirstName = "Админ",
+                            IsDeleted = false,
+                            LastName = "Админов",
+                            LockoutEnabled = false,
+                            ModifiedAt = new DateTime(2024, 1, 19, 11, 48, 44, 32, DateTimeKind.Utc).AddTicks(1533),
+                            PasswordHash = "AQAAAAIAAYagAAAAEFRYi9O3UGt48Cl+maK5i9no5y4KHGT7TsjHXEQfbLqfFXHaswD7KaQevshBOxHaXQ==",
+                            PhoneNumber = "996111222333",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.ApplicationUserRole", b =>
@@ -1453,9 +1484,19 @@ namespace Infrastructure.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("RoleId1")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId1")
+                        .HasColumnType("integer");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
+
+                    b.HasIndex("RoleId1");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("AspNetUserRoles", "main");
                 });
@@ -1538,6 +1579,32 @@ namespace Infrastructure.Migrations
                     b.HasKey("NameEn");
 
                     b.ToTable("CandidateTypes", "main");
+
+                    b.HasData(
+                        new
+                        {
+                            NameEn = "Mother",
+                            NameKg = "Эне",
+                            NameRu = "Мать"
+                        },
+                        new
+                        {
+                            NameEn = "Citizen",
+                            NameKg = "Жараан",
+                            NameRu = "гражданин"
+                        },
+                        new
+                        {
+                            NameEn = "Foreigner",
+                            NameKg = "Чет өлкөлүк жараан",
+                            NameRu = "Иностранец"
+                        },
+                        new
+                        {
+                            NameEn = "Entity",
+                            NameKg = "Коом",
+                            NameRu = "Организация"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.CandidateTypesDocumentTypes", b =>
@@ -1699,6 +1766,18 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ModifiedBy");
 
                     b.ToTable("offices", "main");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 51617,
+                            CreatedAt = new DateTime(2024, 1, 19, 11, 48, 44, 90, DateTimeKind.Utc).AddTicks(1798),
+                            CreatedBy = 1,
+                            ModifiedAt = new DateTime(2024, 1, 19, 11, 48, 44, 90, DateTimeKind.Utc).AddTicks(1821),
+                            ModifiedBy = 1,
+                            NameKg = "Мамлекеттик сыйлыктардын секретариаты",
+                            NameRu = "Секретариат по государственным наградам"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.OfficeRelationship", b =>
@@ -2183,15 +2262,27 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.ApplicationUserRole", b =>
                 {
+                    b.HasOne("Domain.Entities.ApplicationRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Domain.Entities.ApplicationRole", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId")
+                        .HasForeignKey("RoleId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.ApplicationUser", "User")
                         .WithMany("Roles")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2283,7 +2374,7 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.MothersChildren", b =>
                 {
                     b.HasOne("Domain.Entities.Child", "Child")
-                        .WithMany()
+                        .WithMany("MothersChildren")
                         .HasForeignKey("ChildId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2413,7 +2504,7 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.RewardApplicationStatus", b =>
                 {
                     b.HasOne("Domain.Entities.Office", "Office")
-                        .WithMany()
+                        .WithMany("RewardApplicationStatuses")
                         .HasForeignKey("OfficeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2566,6 +2657,8 @@ namespace Infrastructure.Migrations
 
                     b.Navigation("ParentOffices");
 
+                    b.Navigation("RewardApplicationStatuses");
+
                     b.Navigation("UserOffices");
                 });
 
@@ -2574,6 +2667,11 @@ namespace Infrastructure.Migrations
                     b.Navigation("Documents");
 
                     b.Navigation("RewardApplicationStatuses");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Child", b =>
+                {
+                    b.Navigation("MothersChildren");
                 });
 #pragma warning restore 612, 618
         }
