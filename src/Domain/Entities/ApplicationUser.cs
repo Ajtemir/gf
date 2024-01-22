@@ -58,7 +58,7 @@ public sealed class ApplicationUser : IdentityUser<int>, ISoftDeleteEntity
     
     public bool IsDeleted { get; set; }
 
-    public ICollection<ApplicationUserRole> Roles { get; set; } = new List<ApplicationUserRole>();
+    public ICollection<ApplicationUserRole> UserRoles { get; set; } = new List<ApplicationUserRole>();
     public ICollection<Office> Offices { get; set; } = new List<Office>();
     public ICollection<UserOffice> UserOffices { get; set; } = new List<UserOffice>();
     

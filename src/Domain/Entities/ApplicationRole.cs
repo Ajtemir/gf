@@ -16,5 +16,5 @@ public sealed class ApplicationRole : IdentityRole<int>
 
     public string Note { get; set; } = null!;
 
-    public ICollection<ApplicationUserRole> Users { get; set; } = new List<ApplicationUserRole>();
+    public ICollection<ApplicationUserRole> UserRoles { get; set; } = new List<ApplicationUserRole>();
 }

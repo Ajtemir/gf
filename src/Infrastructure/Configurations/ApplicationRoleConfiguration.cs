@@ -12,7 +12,7 @@ public class ApplicationRoleConfiguration : IEntityTypeConfiguration<Application
         builder.Property(r => r.Note).IsRequired().HasMaxLength(128);
         builder.Property(r => r.ConcurrencyStamp).IsConcurrencyToken();
 
-        builder.HasMany(role => role.Users)
+        builder.HasMany(role => role.UserRoles)
             .WithOne(userRole => userRole.Role)
             .HasForeignKey(userRole => userRole.RoleId)
             .IsRequired();

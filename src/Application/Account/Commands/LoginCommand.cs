@@ -38,7 +38,7 @@ public class LoginCommand : IRequest<UserDto>
                 .Where(x => x.Id == user.Id)
                 .Select(u => new
                 {
-                    Roles = u.Roles.Select(userRole => userRole.Role.Name!),
+                    Roles = u.UserRoles.Select(userRole => userRole.Role.Name!),
                     Offices = u.UserOffices.Select(userOffice => new UserOfficeDto()
                     {
                         OfficeId = userOffice.OfficeId,

@@ -19,10 +19,11 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
 
         builder.Property(u => u.ConcurrencyStamp).IsConcurrencyToken();
 
-        builder.HasMany(user => user.Roles)
-            .WithOne(userRole => userRole.User)
-            .HasForeignKey(userRole => userRole.UserId)
-            .IsRequired();
+        builder.HasMany(e => e.UserRoles)
+            .WithOne()
+            .HasForeignKey(e => e.UserId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(user => user.Offices)
             .WithMany(office => office.Users)

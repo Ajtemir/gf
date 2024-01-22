@@ -24,7 +24,7 @@ public class UserProfile : Profile
             .ForMember(d => d.Image, c => c.MapFrom(s =>
                 s.Image == null ? null : Convert.ToBase64String(s.Image)))
             .ForMember(d => d.Roles, c => c.MapFrom(s =>
-                s.Roles.Select(r => r.Role.Name)));
+                s.UserRoles.Select(r => r.Role.Name)));
 
         CreateMap<ApplicationUser, UserSummaryDto>()
             .ForMember(d => d.CreatedByUser, c => c.MapFrom(s =>

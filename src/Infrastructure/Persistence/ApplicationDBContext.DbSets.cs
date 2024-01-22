@@ -6,6 +6,7 @@ namespace Infrastructure.Persistence;
 
 public partial class ApplicationDbContext
 {
+    public DbSet<ApplicationUserRole> UserRoles { get; set; } = null!;
     public DbSet<Candidate> Candidates { get; set; } = null!;
     public DbSet<Person> People { get; set; } = null!;
     public DbSet<Citizen> Citizens { get; set; } = null!;
