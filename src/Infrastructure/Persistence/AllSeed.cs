@@ -9,7 +9,7 @@ public static partial class Seed
         builder.RoleSeed();
         builder.UserSeed();
         builder.OfficeSeed();
-        // builder.UserRoleSeed();
+        builder.UserRoleSeed();
         builder.CandidateTypeSeed();
     }
 }

@@ -65,8 +65,8 @@ public class ApplicationDbContextInitializer
         {
             await _roleManager.CreateAsync(new ApplicationRole(role.Name, role.Note));
         }
-        var admin = await _userManager.FindByNameAsync(); // todo
-        await _userManager.AddToRolesAsync(admin, new[] { DomainRole.Administrator.Name });
+        // var admin = await _userManager.FindByNameAsync(); // todo
+        // await _userManager.AddToRolesAsync(admin, new[] { DomainRole.Administrator.Name });
         // await CreateIfNotExistAdmin();
     }
 

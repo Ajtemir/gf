@@ -50,7 +50,7 @@ public class Program
         {
             var initializer = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
             await initializer.InitializeAsync();
-            await initializer.InitializeRolesAndUsers();
+            // await initializer.InitializeRolesAndUsers();
         }
 
         app.UseHttpsRedirection();
