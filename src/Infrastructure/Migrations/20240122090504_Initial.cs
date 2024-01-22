@@ -719,13 +719,13 @@ namespace Infrastructure.Migrations
                 schema: "main",
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName", "Note" },
-                values: new object[] { 1, "f21499c6-1299-4b21-938e-de2b25fcef27", "Administrator", "ADMINISTRATOR", "Администратор" });
+                values: new object[] { 1, "47c89ee1-cb4f-4398-a5ea-443dd1bf10b8", "Administrator", "ADMINISTRATOR", "Администратор" });
 
             migrationBuilder.InsertData(
                 schema: "main",
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "CreatedBy", "Email", "EmailConfirmed", "FirstName", "Image", "IsDeleted", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedAt", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PatronymicName", "PhoneNumber", "PhoneNumberConfirmed", "Pin", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "c0a082e7-fb8b-4ce9-bfc8-b8c97f91c045", new DateTime(2024, 1, 22, 8, 12, 24, 431, DateTimeKind.Utc).AddTicks(5663), null, "Admin@test.ru", false, "Админ", null, false, "Админов", false, null, new DateTime(2024, 1, 22, 8, 12, 24, 431, DateTimeKind.Utc).AddTicks(5692), null, null, null, "AQAAAAIAAYagAAAAEGgj17uBqhsttzfKPZ9Yl0Z0+71H/HaNfz9/mFr+cTayvTDZT/ZV5RwnKwrWMl4oCg==", null, "996111222333", false, null, null, false, "Admin" });
+                values: new object[] { 1, 0, "1b13dbf7-21d7-432a-8dae-935abf774a86", new DateTime(2024, 1, 22, 9, 5, 4, 25, DateTimeKind.Utc).AddTicks(1954), 1, "Admin@test.ru", false, "Админ", null, false, "Админов", false, null, new DateTime(2024, 1, 22, 9, 5, 4, 25, DateTimeKind.Utc).AddTicks(1979), 1, "ADMIN@TEST.RU", "ADMIN", "AQAAAAIAAYagAAAAEMOI+MVIueJhHLS/YRgeApPmpMSXARz1d4K46wKYEL+135M6kk/ohGBD3NvU72n9jw==", null, "996111222333", false, null, "bf995f67-b767-465f-a8e3-6173804dc137", false, "Admin" });
 
             migrationBuilder.InsertData(
                 schema: "main",
@@ -964,7 +964,7 @@ namespace Infrastructure.Migrations
                 schema: "main",
                 table: "offices",
                 columns: new[] { "id", "created_at", "created_by", "modified_at", "modified_by", "name_kg", "name_ru" },
-                values: new object[] { 51617, new DateTime(2024, 1, 22, 8, 12, 24, 490, DateTimeKind.Utc).AddTicks(99), 1, new DateTime(2024, 1, 22, 8, 12, 24, 490, DateTimeKind.Utc).AddTicks(123), 1, "Мамлекеттик сыйлыктардын секретариаты", "Секретариат по государственным наградам" });
+                values: new object[] { 51617, new DateTime(2024, 1, 22, 9, 5, 4, 82, DateTimeKind.Utc).AddTicks(6610), 1, new DateTime(2024, 1, 22, 9, 5, 4, 82, DateTimeKind.Utc).AddTicks(6642), 1, "Мамлекеттик сыйлыктардын секретариаты", "Секретариат по государственным наградам" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

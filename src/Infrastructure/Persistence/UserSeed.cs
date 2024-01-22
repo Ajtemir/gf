@@ -20,6 +20,11 @@ public static partial class Seed
             ModifiedAt = DateTime.Now.SetKindUtc(),
             FirstName = "Админ",
             LastName = "Админов",
+            NormalizedUserName = "ADMIN",
+            NormalizedEmail = "ADMIN@TEST.RU",
+            SecurityStamp = Guid.NewGuid().ToString(),
+            ModifiedBy = 1,
+            CreatedBy = 1,
         };
         var password = new PasswordHasher<ApplicationUser>();
         var hashed = password.HashPassword(admin,"password");

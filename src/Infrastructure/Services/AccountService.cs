@@ -19,7 +19,7 @@ public class AccountService : IAccountService
         var user = await _signInManager.UserManager.FindByNameAsync(userName);
         if (user is null)
         {
-            throw new BadRequestException("Invalid credentials");
+            throw new BadRequestException("Invalid credentials. Username not found");
         }
 
         var isValidPassword = await _signInManager.UserManager.CheckPasswordAsync(user, password);
