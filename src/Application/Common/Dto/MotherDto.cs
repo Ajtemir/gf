@@ -11,7 +11,7 @@ public class MotherDto : CandidateDto
     public string? PassportNumber { get; set; }
     public required Gender Gender { get; set; }
     public DateOnly BirthDate { get; set; }
-    public DateOnly DeathDate { get; set; }
+    public DateOnly? DeathDate { get; set; }
     
     public required string RegisteredAddress { get; set; }
     public string? ActualAddress { get; set; }

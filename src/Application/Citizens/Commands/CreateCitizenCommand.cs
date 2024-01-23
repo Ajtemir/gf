@@ -73,6 +73,7 @@ public class CreateCitizenCommand : IRequest<CitizenDto>
                 YearsOfWorkInCollective = request.YearsOfWorkInCollective,
                 ImageName = request.ImageName,
                 Image = image,
+                CandidateTypeId = CandidateTypes.Citizen,
             };
 
             _context.Citizens.Add(citizen);

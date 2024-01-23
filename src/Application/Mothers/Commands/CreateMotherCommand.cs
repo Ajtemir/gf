@@ -49,7 +49,7 @@ public class CreateMotherCommand : IRequest<MotherDto>
             }
             var mother = new Mother
             {
-                CandidateTypeId = "mother",
+                CandidateTypeId = CandidateTypes.Mother,
                 LastName = request.LastName,
                 FirstName = request.FirstName,
                 PatronymicName = request.PatronymicName,

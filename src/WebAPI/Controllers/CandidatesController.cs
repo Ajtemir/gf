@@ -7,8 +7,10 @@ using Application.Entities.Queries;
 using Application.Foreigners.Queries;
 using Application.Mothers.Queries;
 using Domain.Entities;
+using Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Extensions;
 
 namespace WebAPI.Controllers;
 
@@ -30,11 +32,10 @@ public class CandidatesController : ApiControllerBase
     public async Task<ActionResult<CandidateDto>> GetCandidate(int id, CancellationToken cancellationToken)
     {
         var candidateType = await Mediator.Send(new GetCandidateTypeQuery { Id = id }, cancellationToken);
-        
         CandidateDto candidateDto = candidateType switch
         {
-            nameof(Citizen) => await Mediator.Send(new GetCitizenQuery { Id = id }, cancellationToken),
-            nameof(Mother) => await Mediator.Send(new GetMotherQuery { Id = id }, cancellationToken),
+            CandidateTypes.Citizen => await Mediator.Send(new GetCitizenQuery { Id = id }, cancellationToken),
+            CandidateTypes.Mother => await Mediator.Send(new GetMotherQuery { Id = id }, cancellationToken),
             nameof(Foreigner) => await Mediator.Send(new GetForeignerQuery { Id = id }, cancellationToken),
             nameof(Entity) => await Mediator.Send(new GetEntityQuery { Id = id }, cancellationToken),
             _ => throw new InvalidEnumArgumentException($"Invalid {nameof(Candidate.CandidateTypeId)}: {candidateType}")

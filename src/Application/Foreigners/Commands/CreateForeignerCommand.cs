@@ -34,6 +34,9 @@ public class CreateForeignerCommand : IRequest<ForeignerDto>
 
         public async Task<ForeignerDto> Handle(CreateForeignerCommand request, CancellationToken cancellationToken)
         {
+            var member = new Member();
+            _context.Members.Add(member);
+            await _context.SaveChangesAsync(cancellationToken);
             var foreigner = new Foreigner
             {
                 LastName = request.LastName,
@@ -43,6 +46,7 @@ public class CreateForeignerCommand : IRequest<ForeignerDto>
                 BirthDate = request.BirthDate,
                 DeathDate = request.DeathDate,
                 CitizenshipId = request.CitizenshipId,
+                MemberId = member.Id,
             };
             
 

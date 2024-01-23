@@ -14,6 +14,7 @@ public class CandidateProfile : Profile
             .Include<Mother, MotherDto>()
             .Include<Foreigner, ForeignerDto>()
             .Include<Entity, EntityDto>()
+            .ForMember(d => d.CandidateType, c => c.MapFrom(s => s.CandidateTypeId))
             .ForMember(d => d.Image, c => c.MapFrom(s => s.Image == null ? null : Convert.ToBase64String(s.Image)))
             .ForMember(d => d.CreatedByUser, c => c.MapFrom(MapCreatedByUser()))
             .ForMember(d => d.ModifiedByUser, c => c.MapFrom(MapModifiedByUser()));
@@ -26,7 +27,8 @@ public class CandidateProfile : Profile
             .ForMember(d => d.CitizenshipRu, c => c.MapFrom(s => s.Citizenship!.NameRu))
             .ForMember(d => d.CitizenshipKg, c => c.MapFrom(s => s.Citizenship!.NameKg));
 
-        CreateMap<Mother, MotherDto>();
+        CreateMap<Mother, MotherDto>()
+            .ForMember(d => d.DeathDate, c => c.MapFrom(s => s.DeathDate));
         CreateMap<Entity, EntityDto>();
     }
 
