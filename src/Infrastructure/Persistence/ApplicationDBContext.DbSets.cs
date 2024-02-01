@@ -27,7 +27,8 @@ public partial class ApplicationDbContext
     public DbSet<DocumentType> DocumentTypes { get; set; } = null!;
     public DbSet<IssuedReward> IssuedRewards { get; set; } = null!;
     public DbSet<CandidateType> CandidateTypes { get; set; } = null!;
-    public DbSet<CandidateTypesDocumentTypes> CandidateTypesDocumentTypes { get; set; } = null!;
+    public DbSet<RewardDocumentType> RewardDocumentType { get; set; } = null!;
     public DbSet<MothersChildren> MothersChildren { get; set; } = null!;
+    public DbSet<CandidateTypeReward> CandidateTypesRewards { get; set; } = null!;
     
 }

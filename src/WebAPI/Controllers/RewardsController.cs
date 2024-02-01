@@ -1,6 +1,7 @@
 using Application.Common.Dto;
 using Application.Rewards.Commands;
 using Application.Rewards.Queries;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +9,15 @@ namespace WebAPI.Controllers;
 
 [Authorize]
 [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-public class RewardsController : ApiControllerBase
+public partial class RewardsController : ApiControllerBase
 {
+    private readonly ApplicationDbContext _context;
+
+    public RewardsController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<RewardDto>>> GetRewards(CancellationToken cancellationToken)

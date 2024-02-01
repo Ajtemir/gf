@@ -12,4 +12,6 @@ public class Reward : BaseAuditableEntity
     
     public ApplicationUser? CreatedByUser { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }
+    public ICollection<CandidateTypeReward> CandidateTypesRewards { get; set; } = new List<CandidateTypeReward>();
+    public ICollection<RewardDocumentType> RewardDocumentTypes { get; set; } = new List<RewardDocumentType>();
 }

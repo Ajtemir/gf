@@ -37,4 +37,25 @@
       <Folder Include="Logs\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Controllers\CreateDocument.cs">
+        <DependentUpon>DocumentsController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetDocument.cs">
+        <DependentUpon>DocumentsController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\CreateApplication.cs">
+        <DependentUpon>ApplicationsController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetDataForCreateDocument.cs">
+        <DependentUpon>ApplicationsController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetRewardsByCandidateId.cs">
+        <DependentUpon>RewardsController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetApplication.cs">
+        <DependentUpon>ApplicationsController.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

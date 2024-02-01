@@ -11,5 +11,9 @@ public static partial class Seed
         builder.OfficeSeed();
         builder.UserRoleSeed();
         builder.CandidateTypeSeed();
+        builder.DocumentTypeSeed();
+        builder.RewardSeed();
+        builder.CandidateTypeRewardSeed();
+        builder.RewardDocumentTypesSeed();
     }
 }

@@ -12,8 +12,8 @@ public class RewardApplicationConfiguration : IEntityTypeConfiguration<RewardApp
     {
         builder.HasQueryFilter(x => x.CreatedByUser!.IsDeleted == false && x.ModifiedByUser!.IsDeleted == false);
         
-        builder.Property(ra => ra.Region)
-            .HasConversion(EnumerationValueConverter<Region>.Create());
+        // builder.Property(ra => ra.Region)
+        //     .HasConversion(EnumerationValueConverter<Region>.Create());
 
         builder.HasOne(ra => ra.CreatedByUser)
             .WithMany()

@@ -19,8 +19,8 @@ public class CandidateConfiguration : IEntityTypeConfiguration<Candidate>
         builder.Property(x => x.Image).HasMaxLength(FileSizeHelper.ToMegabytes(4));
         
         builder.HasMany(rc => rc.Applications)
-            .WithOne(ra => ra.RewardCandidate)
-            .HasForeignKey(ra => ra.RewardCandidateId)
+            .WithOne(ra => ra.Candidate)
+            .HasForeignKey(ra => ra.CandidateId)
             .IsRequired();
 
         builder.HasOne(rc => rc.CreatedByUser)

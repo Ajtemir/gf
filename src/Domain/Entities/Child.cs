@@ -2,5 +2,5 @@ namespace Domain.Entities;
 
 public class Child : Person
 {
-    public ICollection<MothersChildren> MothersChildren { get; set; } = new List<MothersChildren>();
+    public MothersChildren MothersChildren { get; set; } = null!;
 }

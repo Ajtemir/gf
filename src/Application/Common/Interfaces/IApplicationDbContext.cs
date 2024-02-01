@@ -38,8 +38,10 @@ public interface IApplicationDbContext
     DbSet<DocumentType> DocumentTypes { get; } 
     DbSet<IssuedReward> IssuedRewards { get; } 
     DbSet<CandidateType> CandidateTypes { get; } 
-    DbSet<CandidateTypesDocumentTypes> CandidateTypesDocumentTypes { get; } 
+    public DbSet<RewardDocumentType> RewardDocumentType { get; }
+
     DbSet<MothersChildren> MothersChildren { get; } 
+    DbSet<CandidateTypeReward> CandidateTypesRewards { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

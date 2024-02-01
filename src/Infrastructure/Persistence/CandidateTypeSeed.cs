@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence;
@@ -11,25 +12,25 @@ public static partial class Seed
             new CandidateType
             {
                 NameKg = "Эне",
-                NameEn = "Mother",
+                NameEn = CandidateTypes.Mother,
                 NameRu = "Мать",
             },
             new CandidateType
             {
                 NameKg = "Жараан",
-                NameEn = "Citizen",
+                NameEn = CandidateTypes.Citizen,
                 NameRu = "гражданин",
             },
             new CandidateType
             {
                 NameKg = "Чет өлкөлүк жараан",
-                NameEn = "Foreigner",
+                NameEn = CandidateTypes.Foreigner,
                 NameRu = "Иностранец",
             },
             new CandidateType
             {
                 NameKg = "Коом",
-                NameEn = "Entity",
+                NameEn = CandidateTypes.Entity,
                 NameRu = "Организация",
             }
         );
