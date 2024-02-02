@@ -1,6 +1,7 @@
 using System.Reflection;
 using Application.Common.Behaviours;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ public static class ConfigureApplicationServices
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddFluentValidationAutoValidation();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddMediatR(cfg =>
         {
