@@ -11,7 +11,7 @@ public static partial class Seed
         builder.Entity<RewardDocumentType>().HasData(
             new RewardDocumentType
             {
-                RewardId = 1,
+                RewardId = EneDanky.Id,
                 DocumentTypeId = PassportDocumentType.Id,
             }
         );

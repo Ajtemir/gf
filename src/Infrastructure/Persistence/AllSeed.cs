@@ -10,6 +10,7 @@ public static partial class Seed
         builder.UserSeed();
         builder.OfficeSeed();
         builder.UserRoleSeed();
+        builder.UserOfficeSeed();
         builder.CandidateTypeSeed();
         builder.DocumentTypeSeed();
         builder.RewardSeed();

@@ -21,4 +21,7 @@ public static class CollectionExtensions
     }
 
     public static bool NotContains<T>(this ICollection<T> source, T searched) => !source.Contains(searched);
+    public static bool IsEmpty<T>(this ICollection<T> source) => !source.Any();
+    public static bool IsNullOrEmpty<T>(this ICollection<T>? source) => source is null || !source.Any();
+
 }

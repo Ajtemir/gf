@@ -38,7 +38,7 @@ public interface IApplicationDbContext
     DbSet<DocumentType> DocumentTypes { get; } 
     DbSet<IssuedReward> IssuedRewards { get; } 
     DbSet<CandidateType> CandidateTypes { get; } 
-    public DbSet<RewardDocumentType> RewardDocumentType { get; }
+    public DbSet<RewardDocumentType> RewardDocumentTypes { get; }
 
     DbSet<MothersChildren> MothersChildren { get; } 
     DbSet<CandidateTypeReward> CandidateTypesRewards { get; }

@@ -8,10 +8,10 @@ namespace Domain.Entities;
 public class Document
 {
     public int Id { get; set; }
-    public required byte[] Bytes { get; set; }
-    public required string Name { get; set; }
-    public required string Extension { get; set; }
-    public required string ContentType { get; set; }
+    public byte[]? Bytes { get; set; }
+    public string? Name { get; set; }
+    public string? Extension { get; set; }
+    public string? ContentType { get; set; }
     [ForeignKey(nameof(DocumentType))]
     public int DocumentTypeId { get; set; }
     public DocumentType DocumentType { get; set; } = null!;

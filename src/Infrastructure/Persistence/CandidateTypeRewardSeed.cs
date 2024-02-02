@@ -11,7 +11,7 @@ public partial class Seed
         builder.Entity<CandidateTypeReward>().HasData(
             new CandidateTypeReward
             {
-                RewardId = 1,
+                RewardId = EneDanky.Id,
                 CandidateTypeId = CandidateTypes.Citizen,
             }
         );
