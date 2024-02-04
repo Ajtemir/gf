@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Application.Common.Interfaces;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using WebAPI.Extensions;
@@ -42,7 +43,8 @@ public static class ConfigureWebAPIServices
         services.AddControllers(options =>
         {
             options.Filters.Add<ApiExceptionFilter>();
-        });
+        }).AddJsonOptions(o => o.JsonSerializerOptions
+            .ReferenceHandler = ReferenceHandler.Preserve);
 
         return services;
     }

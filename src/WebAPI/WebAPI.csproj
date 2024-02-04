@@ -47,9 +47,6 @@
       <Compile Update="Controllers\CreateApplication.cs">
         <DependentUpon>ApplicationsController.cs</DependentUpon>
       </Compile>
-      <Compile Update="Controllers\GetDataForCreateDocument.cs">
-        <DependentUpon>ApplicationsController.cs</DependentUpon>
-      </Compile>
       <Compile Update="Controllers\GetRewardsByCandidateId.cs">
         <DependentUpon>RewardsController.cs</DependentUpon>
       </Compile>
