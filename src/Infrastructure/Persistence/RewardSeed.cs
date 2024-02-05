@@ -23,6 +23,6 @@ public static partial class Seed
         ModifiedBy = 1,
         ModifiedAt = DateTime.Now.SetKindUtc(),
         ImageName = "ene.jpeg",
-        Image = new byte[] { },
+        Image = new byte[] { 1 },
     };
 }

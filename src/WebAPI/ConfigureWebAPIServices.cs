@@ -43,8 +43,9 @@ public static class ConfigureWebAPIServices
         services.AddControllers(options =>
         {
             options.Filters.Add<ApiExceptionFilter>();
-        }).AddJsonOptions(o => o.JsonSerializerOptions
-            .ReferenceHandler = ReferenceHandler.Preserve);
+        })
+            // .AddJsonOptions(o => o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve)
+            ;
 
         return services;
     }
