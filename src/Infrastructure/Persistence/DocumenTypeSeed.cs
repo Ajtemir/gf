@@ -9,13 +9,7 @@ public static partial class Seed
     {
         builder.Entity<DocumentType>().HasData(
             PassportDocumentType,
-            new DocumentType
-            {
-                Id = 2,
-                Required = false,
-                NameKg = "Справка о несудимости",
-                NameRu = "Справка о несудимости билдирме",
-            }
+            Nesudimost
         );
     }
 
@@ -25,5 +19,10 @@ public static partial class Seed
         Required = true,
         NameKg = "Паспорт KG",
         NameRu = "Паспорт RU",
+    };
+
+    private static DocumentType Nesudimost => new DocumentType
+    {
+        Id = 2, Required = false, NameKg = "Справка о несудимости", NameRu = "Справка о несудимости билдирме",
     };
 }

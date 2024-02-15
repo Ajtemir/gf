@@ -13,6 +13,11 @@ public static partial class Seed
             {
                 RewardId = EneDanky.Id,
                 DocumentTypeId = PassportDocumentType.Id,
+            },
+            new RewardDocumentType
+            {
+                RewardId = EneDanky.Id,
+                DocumentTypeId = Nesudimost.Id,
             }
         );
     }

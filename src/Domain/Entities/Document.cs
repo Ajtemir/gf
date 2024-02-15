@@ -8,6 +8,7 @@ namespace Domain.Entities;
 public class Document
 {
     public int Id { get; set; }
+    [JsonIgnore]
     public byte[]? Bytes { get; set; }
     public string? Name { get; set; }
     public string? Extension { get; set; }
@@ -17,5 +18,6 @@ public class Document
     public DocumentType DocumentType { get; set; } = null!;
     [ForeignKey(nameof(RewardApplication))]
     public int RewardApplicationId { get; set; }
+    [JsonIgnore]
     public RewardApplication RewardApplication { get; set; } = null!;
 }

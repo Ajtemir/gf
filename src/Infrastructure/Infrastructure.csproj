@@ -58,6 +58,18 @@
       <Compile Update="Persistence\UserOfficeSeed.cs">
         <DependentUpon>AllSeed.cs</DependentUpon>
       </Compile>
+      <Compile Update="Persistence\CandidateSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\MemberSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\ApplicationSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\DocumentSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

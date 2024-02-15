@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Domain.Common;
 
 namespace Domain.Entities;
@@ -21,5 +22,6 @@ public abstract class Candidate : BaseAuditableEntity
     
     public ApplicationUser? CreatedByUser { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }
+    [JsonIgnore]
     public ICollection<RewardApplication> Applications { get; set; } = new List<RewardApplication>();
 }

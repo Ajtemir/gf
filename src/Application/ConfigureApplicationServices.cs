@@ -14,7 +14,7 @@ public static class ConfigureApplicationServices
     {
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddFluentValidationAutoValidation();
-        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddMediatR(cfg =>
         {
             cfg.AddBehavior(typeof(IRequestPreProcessor<>), typeof(LoggingBehaviour<>), ServiceLifetime.Scoped);
