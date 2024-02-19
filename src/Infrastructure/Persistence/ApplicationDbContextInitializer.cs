@@ -38,8 +38,6 @@ public class ApplicationDbContextInitializer
                 var firstDocument = documents[0];
                 firstDocument.Bytes = first;
                 firstDocument.Name = "first.pdf";
-                firstDocument.ContentType = "application/pdf";
-                firstDocument.Extension = "pdf";
                 
                 var secondFileName =  "second.pdf";
                 var secondFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Documents", secondFileName);
@@ -47,8 +45,6 @@ public class ApplicationDbContextInitializer
                 var secondDocument = documents[1];
                 secondDocument.Bytes = second;
                 secondDocument.Name = secondFileName;
-                secondDocument.ContentType = "application/pdf";
-                secondDocument.Extension = "pdf";
                 
                 await _context.SaveChangesAsync();
             }
