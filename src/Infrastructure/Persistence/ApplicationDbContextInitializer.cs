@@ -30,23 +30,7 @@ public class ApplicationDbContextInitializer
             if (_context.Database.IsNpgsql())
             {
                 await _context.Database.MigrateAsync();
-                var documents = await _context.Documents.OrderBy(x=>x.Id).ToListAsync();
-
-                var firstFileName =  "first.pdf";
-                var firstFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Documents", firstFileName);
-                var first = await File.ReadAllBytesAsync(firstFilePath);
-                var firstDocument = documents[0];
-                firstDocument.Bytes = first;
-                firstDocument.Name = "first.pdf";
-                
-                var secondFileName =  "second.pdf";
-                var secondFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Documents", secondFileName);
-                var second = await File.ReadAllBytesAsync(secondFilePath);
-                var secondDocument = documents[1];
-                secondDocument.Bytes = second;
-                secondDocument.Name = secondFileName;
-                
-                await _context.SaveChangesAsync();
+                await BinaryFileSeeding();
             }
         }
         catch (Exception ex)
@@ -67,6 +51,27 @@ public class ApplicationDbContextInitializer
             _logger.LogError(ex, "An error occured while initializing roles and users: {Message}.", ex.Message);
             throw;
         }
+    }
+
+    private async Task BinaryFileSeeding()
+    {
+        var documents = await _context.Documents.OrderBy(x=>x.Id).ToListAsync();
+
+        var firstFileName =  "first.pdf";
+        var firstFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Documents", firstFileName);
+        var first = await File.ReadAllBytesAsync(firstFilePath);
+        var firstDocument = documents[0];
+        firstDocument.Bytes = first;
+        firstDocument.Name = "first.pdf";
+                
+        var secondFileName =  "second.pdf";
+        var secondFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Documents", secondFileName);
+        var second = await File.ReadAllBytesAsync(secondFilePath);
+        var secondDocument = documents[1];
+        secondDocument.Bytes = second;
+        secondDocument.Name = secondFileName;
+                
+        await _context.SaveChangesAsync();
     }
 
     private async Task TryInitializeAuth()
