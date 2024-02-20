@@ -61,15 +61,21 @@ public class ApplicationDbContextInitializer
         var firstFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Documents", firstFileName);
         var first = await File.ReadAllBytesAsync(firstFilePath);
         var firstDocument = documents[0];
-        firstDocument.Bytes = first;
-        firstDocument.Name = "first.pdf";
+        if (firstDocument.Name == null)
+        {
+            firstDocument.Bytes = first;
+            firstDocument.Name = "first.pdf";
+        }
                 
         var secondFileName =  "second.pdf";
         var secondFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Documents", secondFileName);
         var second = await File.ReadAllBytesAsync(secondFilePath);
         var secondDocument = documents[1];
-        secondDocument.Bytes = second;
-        secondDocument.Name = secondFileName;
+        if (secondDocument.Name == null)
+        {
+            secondDocument.Bytes = second;
+            secondDocument.Name = secondFileName;
+        }
                 
         await _context.SaveChangesAsync();
     }

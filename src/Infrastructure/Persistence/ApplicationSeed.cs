@@ -8,7 +8,186 @@ public static partial class Seed
     private static void ApplicationSeed(this ModelBuilder builder)
     {
         builder.Entity<RewardApplication>().HasData(
-            FirstRewardApplication
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 1,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 2,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 3,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 4,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 5,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 6,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 7,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 8,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 9,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 10,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 11,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 12,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 13,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 14,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 15,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 16,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 17,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 18,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 19,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            },
+            new RewardApplication
+            {
+                SpecialAchievements = "SpecialAchievements",
+                Id = 20,
+                CreatedBy = Admin.Id,
+                CandidateId = FirstMother.Id,
+                RewardId = EneDanky.Id,
+                ModifiedBy = Admin.Id,
+            }
         );
     }
 

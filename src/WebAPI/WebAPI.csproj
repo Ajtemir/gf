@@ -69,6 +69,9 @@
       <Compile Update="Controllers\UpdateDocument.cs">
         <DependentUpon>DocumentsController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\GetApplications.cs">
+        <DependentUpon>ApplicationsController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
