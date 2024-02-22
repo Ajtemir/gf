@@ -20,5 +20,6 @@ public static partial class Seed
         builder.CandidateSeed();
         builder.ApplicationSeed();
         builder.DocumentSeed();
+        builder.StatusSeed();
     }
 }

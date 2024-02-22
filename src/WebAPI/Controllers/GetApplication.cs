@@ -31,10 +31,10 @@ public partial class ApplicationsController
         [JsonIgnore]
         public Candidate Candidate { get; set; }
         public int Id { get; set; }
-        public List<RewardApplicationStatus> Statuses { get; set; }
+        public List<StatusDto> Statuses { get; set; }
         public List<DocumentDto> Documents { get; set; }
         public int RewardId { get; set; }
-        [JsonIgnore]
+        // [JsonIgnore]
         public Reward Reward { get; set; }
     }
 

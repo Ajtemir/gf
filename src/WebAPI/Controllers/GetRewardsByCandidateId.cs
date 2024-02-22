@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Extensions;
@@ -8,6 +9,7 @@ namespace WebAPI.Controllers;
 public partial class RewardsController
 {
     [HttpGet("[action]")]
+    [AllowAnonymous]
     public async Task<ActionResult> GetRewardsByCandidateId([FromQuery]int candidateId)
     {
         var candidate = await _context.Candidates.FirstOrErrorAsync(x => x.Id == candidateId);

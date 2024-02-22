@@ -12,7 +12,7 @@ public partial class Seed
             new CandidateTypeReward
             {
                 RewardId = EneDanky.Id,
-                CandidateTypeId = CandidateTypes.Citizen,
+                CandidateTypeId = CandidateTypes.Mother,
             }
         );
     }

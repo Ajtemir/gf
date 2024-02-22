@@ -72,6 +72,15 @@
       <Compile Update="Controllers\GetApplications.cs">
         <DependentUpon>ApplicationsController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\StatusDto.cs">
+        <DependentUpon>Dtos.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\UserDto.cs">
+        <DependentUpon>Dtos.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\StatusProfile.cs">
+        <DependentUpon>MappingProfile.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

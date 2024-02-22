@@ -20,6 +20,15 @@ public partial class ApplicationsController
         };
         await _context.RewardApplications.AddAsync(application);
         await _context.SaveChangesAsync();
+        await _context.RewardApplicationStatuses.AddAsync(new RewardApplicationStatus
+        {
+            ChangeDate = DateTime.Now.SetKindUtc(),
+            RewardApplicationId = application.Id,
+            OfficeId = 51617, // todo after adding token one needs to extract office id from Identity
+            PreviousStatusId = null,
+            Status = RewardApplicationStatusType.Saved,
+        });
+        await _context.SaveChangesAsync();
         
         var documents = await _context.RewardDocumentTypes.Where(x=>x.RewardId == application.RewardId)
             .Select(x=>new Document
