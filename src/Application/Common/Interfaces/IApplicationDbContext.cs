@@ -42,6 +42,7 @@ public interface IApplicationDbContext
 
     DbSet<MothersChildren> MothersChildren { get; } 
     DbSet<CandidateTypeReward> CandidateTypesRewards { get; }
+    DbSet<UserOffice> UserOffices { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

@@ -30,5 +30,6 @@ public partial class ApplicationDbContext
     public DbSet<RewardDocumentType> RewardDocumentTypes { get; set; } = null!;
     public DbSet<MothersChildren> MothersChildren { get; set; } = null!;
     public DbSet<CandidateTypeReward> CandidateTypesRewards { get; set; } = null!;
-    
+    public DbSet<UserOffice> UserOffices { get; set; } = null!;
+
 }

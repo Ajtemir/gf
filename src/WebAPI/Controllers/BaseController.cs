@@ -1,5 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using Application.Common.Exceptions;
+using AutoMapper;
 using Infrastructure.Persistence;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -16,6 +19,11 @@ public class BaseController : ControllerBase
         _context = context;
         _mapper = mapper;
     }
+    private ISender? _mediator;
+
+    protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<ISender>();
+    protected int UserOfficeId => int.TryParse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Locality)?.Value, out  var officeId) 
+        ? officeId : throw new BadRequestException("Office Id claim does not exist in Claim, login again");
 }
 
 public class PagedList<T> : List<T>

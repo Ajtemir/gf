@@ -20,11 +20,12 @@ public partial class ApplicationsController
         };
         await _context.RewardApplications.AddAsync(application);
         await _context.SaveChangesAsync();
+        var officeId = UserOfficeId;
         await _context.RewardApplicationStatuses.AddAsync(new RewardApplicationStatus
         {
             ChangeDate = DateTime.Now.SetKindUtc(),
             RewardApplicationId = application.Id,
-            OfficeId = 51617, // todo after adding token one needs to extract office id from Identity
+            OfficeId = officeId,
             PreviousStatusId = null,
             Status = RewardApplicationStatusType.Saved,
         });
@@ -43,9 +44,9 @@ public partial class ApplicationsController
             Status = RewardApplicationStatusType.Saved,
             ChangeDate = DateTime.Now.SetKindUtc(),
             PreviousStatusId = null,
-            OfficeId = 51617,
+            OfficeId = officeId,
         };
-        
+        await _context.RewardApplicationStatuses.AddAsync(createdStatus);
         await _context.Documents.AddRangeAsync(documents);
         await _context.SaveChangesAsync();
         return Ok(new CreateApplicationResult
