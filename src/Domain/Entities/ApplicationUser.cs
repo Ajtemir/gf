@@ -64,4 +64,5 @@ public sealed class ApplicationUser : IdentityUser<int>, ISoftDeleteEntity
     
     public ICollection<ApplicationUser> CreatedUsers { get; set; } = new List<ApplicationUser>();
     public ICollection<ApplicationUser> ModifiedUsers { get; set; } = new List<ApplicationUser>();
+    public ICollection<RewardApplicationStatus> Statuses { get; set; } = new List<RewardApplicationStatus>();
 }

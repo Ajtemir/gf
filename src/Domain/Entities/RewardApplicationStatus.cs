@@ -13,4 +13,6 @@ public class RewardApplicationStatus
     public RewardApplication RewardApplication { get; set; } = null!;
     public RewardApplicationStatusType Status { get; set; }
     public DateTime ChangeDate { get; set; } = DateTime.Now;
+    public int UserId { get; set; }
+    public ApplicationUser User { get; set; }
 }

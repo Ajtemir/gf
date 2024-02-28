@@ -54,32 +54,14 @@
       <Compile Update="Controllers\GetApplication.cs">
         <DependentUpon>ApplicationsController.cs</DependentUpon>
       </Compile>
-      <Compile Update="Controllers\DocumentDto.cs">
-        <DependentUpon>Dtos.cs</DependentUpon>
-      </Compile>
       <Compile Update="Controllers\MappingProfile.cs">
         <DependentUpon>BaseController.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Controllers\Dtos.cs">
-        <DependentUpon>BaseController.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Controllers\DocumentProfile.cs">
-        <DependentUpon>MappingProfile.cs</DependentUpon>
       </Compile>
       <Compile Update="Controllers\UpdateDocument.cs">
         <DependentUpon>DocumentsController.cs</DependentUpon>
       </Compile>
       <Compile Update="Controllers\GetApplications.cs">
         <DependentUpon>ApplicationsController.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Controllers\StatusDto.cs">
-        <DependentUpon>Dtos.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Controllers\UserDto.cs">
-        <DependentUpon>Dtos.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Controllers\StatusProfile.cs">
-        <DependentUpon>MappingProfile.cs</DependentUpon>
       </Compile>
     </ItemGroup>
 

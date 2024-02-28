@@ -20,9 +20,9 @@ public partial class DocumentsController
         }
 
         await _context.SaveChangesAsync();
-        return Ok();
+        var response = _mapper.Map<DocumentDto>(document);
+        return Ok(response);
     }
-    
 }
 
 public class UpdateDocumentArgument

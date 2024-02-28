@@ -21,32 +21,24 @@ public partial class ApplicationsController
         await _context.RewardApplications.AddAsync(application);
         await _context.SaveChangesAsync();
         var officeId = UserOfficeId;
-        await _context.RewardApplicationStatuses.AddAsync(new RewardApplicationStatus
+        var createdStatus = new RewardApplicationStatus
         {
             ChangeDate = DateTime.Now.SetKindUtc(),
             RewardApplicationId = application.Id,
             OfficeId = officeId,
             PreviousStatusId = null,
             Status = RewardApplicationStatusType.Saved,
-        });
+        };
+        await _context.RewardApplicationStatuses.AddAsync(createdStatus);
         await _context.SaveChangesAsync();
         
         var documents = await _context.RewardDocumentTypes.Where(x=>x.RewardId == application.RewardId)
-            .Select(x=>new Document
+            .Select(x => new Document
         {
             DocumentTypeId = x.DocumentTypeId,
             RewardApplicationId = application.Id,
         }).ToListAsync();
 
-        var createdStatus = new RewardApplicationStatus
-        {
-            RewardApplicationId = application.Id,
-            Status = RewardApplicationStatusType.Saved,
-            ChangeDate = DateTime.Now.SetKindUtc(),
-            PreviousStatusId = null,
-            OfficeId = officeId,
-        };
-        await _context.RewardApplicationStatuses.AddAsync(createdStatus);
         await _context.Documents.AddRangeAsync(documents);
         await _context.SaveChangesAsync();
         return Ok(new CreateApplicationResult

@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Application.Common.Dto;
 using Application.Common.Exceptions;
 using AutoMapper;
 using Domain.Entities;
@@ -17,11 +18,12 @@ public partial class ApplicationsController
             .AsNoTracking()
             .Include(x=>x.Reward)
             .Include(x=>x.Candidate)
-            .Include(x => x.RewardApplicationStatuses)
+            .Include(x => x.RewardApplicationStatuses).ThenInclude(x=> x.Office)
+            .Include(x => x.RewardApplicationStatuses).ThenInclude(x=> x.User)
             .Include(x => x.Documents)
             .ThenInclude(x=>x.DocumentType)
             .FirstOrErrorAsync(x => x.Id == applicationId, $"Application by id({applicationId}) not found.");
-        GetApplicationResult result = _mapper.Map<GetApplicationResult>(application);
+        var result = _mapper.Map<ApplicationDto>(application);
         return Ok(result);
     }
 
