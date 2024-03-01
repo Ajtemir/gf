@@ -22,10 +22,11 @@ public partial class Seed
         CreatedAt = DateTime.Now.SetKindUtc(),
         CreatedBy = Admin.Id,
         MemberId = FirstMember.Id,
-        PassportNumber = null,
+        PassportNumber = "ID0241126",
         FirstName = "Kalicha",
         LastName = "Askerova",
         RegisteredAddress = "Street 23",
         ModifiedBy = Admin.Id,
+        BirthDate = DateOnly.Parse("12.12.2012"),
     };
 }
