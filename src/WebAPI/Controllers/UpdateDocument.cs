@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Extensions;
 
 namespace WebAPI.Controllers;
@@ -8,7 +9,7 @@ public partial class DocumentsController
     [HttpPost("update")]
     public async Task<ActionResult> UpdateDocument([FromBody]UpdateDocumentArgument argument)
     {
-        var document = await _context.Documents.FirstOrErrorAsync(x => x.Id == argument.DocumentId);
+        var document = await _context.Documents.Include(x=>x.DocumentType).FirstOrErrorAsync(x => x.Id == argument.DocumentId);
         if (argument.File is null || argument.FileName is null)
         {
             document.Reset();
