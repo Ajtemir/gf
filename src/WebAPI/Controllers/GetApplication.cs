@@ -20,8 +20,9 @@ public partial class ApplicationsController
             .Include(x=>x.Candidate)
             .Include(x => x.RewardApplicationStatuses).ThenInclude(x=> x.Office)
             .Include(x => x.RewardApplicationStatuses).ThenInclude(x=> x.User)
-            .Include(x => x.Documents)
-            .ThenInclude(x=>x.DocumentType)
+            .Include(x => x.ApplicationDocuments)
+            .ThenInclude(x=> x.Document)
+            .ThenInclude(x=> x.DocumentType)
             .FirstOrErrorAsync(x => x.Id == applicationId, $"Application by id({applicationId}) not found.");
         var result = _mapper.Map<ApplicationDto>(application);
         return Ok(result);
@@ -46,7 +47,7 @@ public partial class ApplicationsController
         {
             CreateMap<RewardApplication, GetApplicationResult>()
                 .ForMember(d => d.Id, x => x.MapFrom(s => s.Id))
-                .ForMember(d => d.Documents, x => x.MapFrom(s => s.Documents))
+                .ForMember(d => d.Documents, x => x.MapFrom(s => s.ApplicationDocuments.Select(d=>d.Document)))
                 .ForMember(d => d.Statuses, x => x.MapFrom(s => s.RewardApplicationStatuses))
             ;
         }

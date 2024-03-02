@@ -2,5 +2,6 @@ namespace Domain.Entities;
 
 public class Child : Person
 {
-    public MothersChildren MothersChildren { get; set; } = null!;
+    public MotherChild MotherChild { get; set; } = null!;
+    public ICollection<ChildDocument> ChildDocuments { get; set; } = new List<ChildDocument>();
 }

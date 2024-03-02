@@ -36,10 +36,15 @@ public partial class ApplicationsController
             .Select(x => new Document
         {
             DocumentTypeId = x.DocumentTypeId,
-            RewardApplicationId = application.Id,
         }).ToListAsync();
 
         await _context.Documents.AddRangeAsync(documents);
+        await _context.SaveChangesAsync();
+        await _context.ApplicationDocuments.AddRangeAsync(documents.Select(x=> new ApplicationDocument
+        {
+            ApplicationId = application.Id,
+            DocumentId = x.Id,
+        }));
         await _context.SaveChangesAsync();
         return Ok(new CreateApplicationResult
         {

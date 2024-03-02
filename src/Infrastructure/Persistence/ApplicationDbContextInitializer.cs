@@ -76,6 +76,20 @@ public class ApplicationDbContextInitializer
             secondDocument.Bytes = second;
             secondDocument.Name = secondFileName;
         }
+        
+        var thirdDocument = documents[2];
+        if (thirdDocument.Name == null)
+        {
+            thirdDocument.Bytes = second;
+            thirdDocument.Name = secondFileName;
+        }
+        
+        var fourthDocument = documents[3];
+        if (fourthDocument.Name == null)
+        {
+            fourthDocument.Bytes = second;
+            fourthDocument.Name = secondFileName;
+        }
                 
         await _context.SaveChangesAsync();
     }

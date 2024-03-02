@@ -40,9 +40,13 @@ public interface IApplicationDbContext
     DbSet<CandidateType> CandidateTypes { get; } 
     public DbSet<RewardDocumentType> RewardDocumentTypes { get; }
 
-    DbSet<MothersChildren> MothersChildren { get; } 
+    DbSet<MotherChild> MotherChildren { get; } 
     DbSet<CandidateTypeReward> CandidateTypesRewards { get; }
     DbSet<UserOffice> UserOffices { get; }
+    DbSet<ApplicationDocument> ApplicationDocuments { get; }
+    DbSet<Child> Children { get; }
+    DbSet<ChildDocument> ChildDocuments { get; }
+    DbSet<ChildDocumentType> ChildDocumentTypes { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

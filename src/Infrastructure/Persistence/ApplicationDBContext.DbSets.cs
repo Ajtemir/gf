@@ -28,8 +28,11 @@ public partial class ApplicationDbContext
     public DbSet<IssuedReward> IssuedRewards { get; set; } = null!;
     public DbSet<CandidateType> CandidateTypes { get; set; } = null!;
     public DbSet<RewardDocumentType> RewardDocumentTypes { get; set; } = null!;
-    public DbSet<MothersChildren> MothersChildren { get; set; } = null!;
+    public DbSet<MotherChild> MotherChildren { get; set; } = null!;
     public DbSet<CandidateTypeReward> CandidateTypesRewards { get; set; } = null!;
     public DbSet<UserOffice> UserOffices { get; set; } = null!;
-
+    public DbSet<ApplicationDocument> ApplicationDocuments { get; }
+    public DbSet<Child> Children { get; }
+    public DbSet<ChildDocument> ChildDocuments { get; }
+    public DbSet<ChildDocumentType> ChildDocumentTypes { get; }
 }

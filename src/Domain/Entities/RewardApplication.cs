@@ -20,5 +20,5 @@ public class RewardApplication : BaseAuditableEntity
     public ApplicationUser? CreatedByUser { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }
     public ICollection<RewardApplicationStatus> RewardApplicationStatuses { get; set; } = new List<RewardApplicationStatus>();
-    public ICollection<Document> Documents { get; set; } = new List<Document>();
+    public ICollection<ApplicationDocument> ApplicationDocuments { get; set; } = new List<ApplicationDocument>();
 }

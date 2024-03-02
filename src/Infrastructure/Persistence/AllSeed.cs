@@ -13,6 +13,7 @@ public static partial class Seed
         builder.UserOfficeSeed();
         builder.CandidateTypeSeed();
         builder.DocumentTypeSeed();
+        builder.ChildDocumentTypeSeed();
         builder.RewardSeed();
         builder.CandidateTypeRewardSeed();
         builder.RewardDocumentTypesSeed();
@@ -20,6 +21,8 @@ public static partial class Seed
         builder.CandidateSeed();
         builder.ApplicationSeed();
         builder.DocumentSeed();
+        builder.ChildDocumentSeed();
+        builder.ApplicationDocumentSeed();
         builder.StatusSeed();
     }
 }

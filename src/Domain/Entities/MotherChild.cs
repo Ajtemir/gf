@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Domain.Entities;
 
 [PrimaryKey(nameof(MotherId), nameof(ChildId))]
-public class MothersChildren
+public class MotherChild
 {
     [ForeignKey(nameof(Mother))]
     public int MotherId { get; set; }

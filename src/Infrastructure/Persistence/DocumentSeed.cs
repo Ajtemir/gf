@@ -9,7 +9,9 @@ public static partial class Seed
     {
         builder.Entity<Document>().HasData(
             FirstRequiredDocument,
-            FirstOptionalDocument
+            FirstOptionalDocument,
+            FirstOptionalChildDocument,
+            FirstRequiredChildDocument
         );
     }
 
@@ -17,13 +19,21 @@ public static partial class Seed
     {
         Id = 1,
         DocumentTypeId = PassportDocumentType.Id,
-        RewardApplicationId = FirstRewardApplication.Id,
     };
     
     private static Document FirstOptionalDocument => new Document
     {
         Id = 2,
         DocumentTypeId = Nesudimost.Id,
-        RewardApplicationId = FirstRewardApplication.Id,
+    }; 
+    private static Document FirstOptionalChildDocument => new()
+    {
+        Id = 3,
+        DocumentTypeId = Attestat.Id,
+    };
+    private static Document FirstRequiredChildDocument => new()
+    {
+        Id = 4,
+        DocumentTypeId = Svidetelstvo.Id,
     };
 }

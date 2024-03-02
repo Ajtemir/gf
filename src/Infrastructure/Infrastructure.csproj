@@ -73,6 +73,15 @@
       <Compile Update="Persistence\StatusSeed.cs">
         <DependentUpon>AllSeed.cs</DependentUpon>
       </Compile>
+      <Compile Update="Persistence\ApplicationDocumentSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\ChildDocumentSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\ChildDocumentTypeSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
