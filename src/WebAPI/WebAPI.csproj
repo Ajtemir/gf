@@ -63,6 +63,9 @@
       <Compile Update="Controllers\GetApplications.cs">
         <DependentUpon>ApplicationsController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\GetChildrenByMotherId.cs">
+        <DependentUpon>ChildrenController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

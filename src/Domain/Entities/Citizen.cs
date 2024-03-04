@@ -4,12 +4,8 @@ using Domain.Dictionary;
 namespace Domain.Entities;
 
 [Table("Citizens")]
-public class Citizen  : Person
+public class Citizen : Person
 {
-    public required string? PassportNumber { get; set; }
-    public required string RegisteredAddress { get; set; }
-    public string? ActualAddress { get; set; }
-    
     public int EducationId { get; set; }
     public Education? Education { get; set; }
     public string? ScienceDegree { get; set; }

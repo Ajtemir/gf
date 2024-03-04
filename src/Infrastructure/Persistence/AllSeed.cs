@@ -24,5 +24,7 @@ public static partial class Seed
         builder.ChildDocumentSeed();
         builder.ApplicationDocumentSeed();
         builder.StatusSeed();
+        builder.ChildSeed();
+        builder.MotherChildrenSeed();
     }
 }

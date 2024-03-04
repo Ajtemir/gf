@@ -12,4 +12,10 @@ public abstract class Person : Candidate
     
     public DateOnly BirthDate { get; set; }
     public DateOnly? DeathDate { get; set; }
+    public string? BirthPlace { get; set; }
+    public string? WorkPlace { get; set; }
+    public string? StudyPlace { get; set; }
+    public required string? PassportNumber { get; set; }
+    public required string? RegisteredAddress { get; set; }
+    public string? ActualAddress { get; set; }
 }

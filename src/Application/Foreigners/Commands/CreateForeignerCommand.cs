@@ -47,6 +47,8 @@ public class CreateForeignerCommand : IRequest<ForeignerDto>
                 DeathDate = request.DeathDate,
                 CitizenshipId = request.CitizenshipId,
                 MemberId = member.Id,
+                PassportNumber = null,
+                RegisteredAddress = null,
             };
             
 

@@ -12,7 +12,6 @@ public partial class ApplicationDbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.HasDefaultSchema("main");
-        
         // Add the Postgres Extension for UUID generation
         builder.HasPostgresExtension("uuid-ossp");
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

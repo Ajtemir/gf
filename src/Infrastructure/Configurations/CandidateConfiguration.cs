@@ -14,7 +14,9 @@ public class CandidateConfiguration : IEntityTypeConfiguration<Candidate>
         builder.ToTable("candidates");
         builder.HasDiscriminator(x => x.CandidateTypeId);
 
-        builder.HasQueryFilter(x => x.CreatedByUser!.IsDeleted == false && x.ModifiedByUser!.IsDeleted == false);
+        builder.HasQueryFilter(x => x.CreatedByUser!.IsDeleted == false && x.ModifiedByUser!.IsDeleted == false 
+                                                                        // && x.CandidateTypeId != "Child"
+                                                                        );
 
         builder.Property(x => x.Image).HasMaxLength(FileSizeHelper.ToMegabytes(4));
         
