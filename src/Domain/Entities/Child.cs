@@ -1,8 +1,41 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Enums;
+
 namespace Domain.Entities;
 
-public class Child : Person
+[Table("Children")]
+public class Child
 {
+    public int Id { get; set; }
+    public required string LastName { get; set; }
+    public required string FirstName { get; set; }
+    public string? PatronymicName { get; set; }
+    
+    public required Gender Gender { get; set; }
+    
+    public DateOnly BirthDate { get; set; }
+    public DateOnly? DeathDate { get; set; }
+    public string? BirthPlace { get; set; }
+    public string? WorkPlace { get; set; }
+    public string? StudyPlace { get; set; }
+    public required string? PassportNumber { get; set; }
+    public required string? RegisteredAddress { get; set; }
+    public string? ActualAddress { get; set; }
     public MotherChild MotherChild { get; set; } = null!;
+    public byte[]? Image { get; set; }
+    public string? ImageName { get; set; }
+    public int MemberId { get; set; }
+    public Member? Member { get; set; }
+    [NotMapped]
+    public string? Pin => Member?.Pin;
+    
+    public ApplicationUser? CreatedByUser { get; set; }
+    public ApplicationUser? ModifiedByUser { get; set; }
+    public int CreatedBy { get; set; }
+    public DateTime CreatedAt { get; set; }
+
+    public int ModifiedBy { get; set; }
+    public DateTime ModifiedAt { get; set; }
     public ICollection<ChildDocument> ChildDocuments { get; set; } = new List<ChildDocument>();
     public bool IsAdopted { get; set; }
 }
