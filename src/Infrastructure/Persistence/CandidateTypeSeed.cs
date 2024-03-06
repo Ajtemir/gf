@@ -32,12 +32,6 @@ public static partial class Seed
                 NameKg = "Коом",
                 NameEn = CandidateTypes.Entity,
                 NameRu = "Организация",
-            },
-            new CandidateType
-            {
-                NameKg = "Бала",
-                NameEn = CandidateTypes.Child,
-                NameRu = "Ребенок",
             }
         );
     }
