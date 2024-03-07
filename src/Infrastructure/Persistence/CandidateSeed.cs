@@ -33,16 +33,15 @@ public partial class Seed
     private static Child AytemirUlanbekUulu => new()
     {
         Id = 2,
-        Gender = Gender.Male,
+        Gender = GenderType.Male,
         Image = new byte[]{0},
         CreatedAt = DateTime.Now.SetKindUtc(),
         CreatedBy = Admin.Id,
         MemberId = AytemirUlanbekUuluMember.Id,
-        PassportNumber = "ID0241126",
+        PassportSeriesNumber = "ID0241126",
         FirstName = "Aytemir",
         LastName = "Ulanbek uulu",
         RegisteredAddress = "Street 23",
-        ModifiedBy = Admin.Id,
         BirthDate = DateOnly.Parse("18.08.2001"),
     };
 }

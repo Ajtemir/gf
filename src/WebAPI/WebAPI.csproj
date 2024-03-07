@@ -66,6 +66,12 @@
       <Compile Update="Controllers\GetChildrenByMotherId.cs">
         <DependentUpon>ChildrenController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\CreateChild.cs">
+        <DependentUpon>ChildrenController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetDocumentsByChildId.cs">
+        <DependentUpon>DocumentsController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

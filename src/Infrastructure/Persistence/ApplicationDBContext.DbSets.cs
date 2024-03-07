@@ -31,8 +31,8 @@ public partial class ApplicationDbContext
     public DbSet<MotherChild> MotherChildren { get; set; } = null!;
     public DbSet<CandidateTypeReward> CandidateTypesRewards { get; set; } = null!;
     public DbSet<UserOffice> UserOffices { get; set; } = null!;
-    public DbSet<ApplicationDocument> ApplicationDocuments { get; }
-    public DbSet<Child> Children { get; }
-    public DbSet<ChildDocument> ChildDocuments { get; }
-    public DbSet<ChildDocumentType> ChildDocumentTypes { get; }
+    public DbSet<ApplicationDocument> ApplicationDocuments { get; set; } = null!;
+    public DbSet<Child> Children { get; set; } = null!;
+    public DbSet<ChildDocument> ChildDocuments { get; set; } = null!;
+    public DbSet<ChildDocumentType> ChildDocumentTypes { get; set; } = null!;
 }

@@ -10,6 +10,5 @@ public class ChildConfiguration: IEntityTypeConfiguration<Child>
 {
     public void Configure(EntityTypeBuilder<Child> builder)
     {
-        builder.Property(x => x.Gender).HasConversion(EnumerationValueConverter<Gender>.Create());
     }
 }
