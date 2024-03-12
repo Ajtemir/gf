@@ -17,7 +17,7 @@ public static partial class Seed
         builder.RewardSeed();
         builder.CandidateTypeRewardSeed();
         builder.RewardDocumentTypesSeed();
-        builder.MemberSeed();
+        builder.PersonSeed();
         builder.CandidateSeed();
         builder.ApplicationSeed();
         builder.DocumentSeed();

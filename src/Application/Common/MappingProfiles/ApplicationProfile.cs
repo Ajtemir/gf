@@ -8,7 +8,7 @@ public class ApplicationProfile : Profile
 {
     public ApplicationProfile()
     {
-        CreateMap<RewardApplication, ApplicationDto>()
+        CreateMap<Domain.Entities.Application, ApplicationDto>()
             .ForMember(d => d.SpecialAchievements, c => c.MapFrom(s => s.SpecialAchievements))
             .ForMember(d => d.Candidate, c => c.MapFrom(x=>x.Candidate))
             .ForMember(d => d.Id, c => c.MapFrom(x=>x.Id))

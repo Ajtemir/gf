@@ -15,13 +15,8 @@ public abstract class Candidate : BaseAuditableEntity
     
     public byte[]? Image { get; set; }
     public string? ImageName { get; set; }
-    public int MemberId { get; set; }
-    public Member? Member { get; set; }
-    [NotMapped]
-    public string? Pin => Member?.Pin;
-    
     public ApplicationUser? CreatedByUser { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }
     [JsonIgnore]
-    public ICollection<RewardApplication> Applications { get; set; } = new List<RewardApplication>();
+    public ICollection<Application> Applications { get; set; } = new List<Application>();
 }

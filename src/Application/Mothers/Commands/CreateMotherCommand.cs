@@ -50,18 +50,18 @@ public class CreateMotherCommand : IRequest<MotherDto>
             var mother = new Mother
             {
                 CandidateTypeId = CandidateTypes.Mother,
-                LastName = request.LastName,
-                FirstName = request.FirstName,
-                PatronymicName = request.PatronymicName,
-                PassportNumber = request.PassportNumber,
-                Gender = Gender.Female,
-                BirthDate = request.BirthDate,
-                DeathDate = request.DeathDate,
-                RegisteredAddress = request.RegisteredAddress,
-                ActualAddress = request.ActualAddress,
+                // LastName = request.LastName,
+                // FirstName = request.FirstName,
+                // PatronymicName = request.PatronymicName,
+                // PassportNumber = request.PassportNumber,
+                // Gender = Gender.Female,
+                // BirthDate = request.BirthDate,
+                // DeathDate = request.DeathDate,
+                // RegisteredAddress = request.RegisteredAddress,
+                // ActualAddress = request.ActualAddress,
                 ImageName = request.ImageName,
                 Image = image,
-                MemberId = member.Id,
+                PersonId = member.Id,
             };
             
             _context.Mothers.Add(mother);

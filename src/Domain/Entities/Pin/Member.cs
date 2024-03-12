@@ -10,6 +10,6 @@ public class Member
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     public string? Pin { get; set; }
-    public PinAbsenceReason? PinAbsenceReason { get; set; }
-    public ICollection<Candidate> Candidates { get; set; } = new List<Candidate>();
+    public int? AvatarId { get; set; }
+    public Avatar? Avatar { get; set; }
 }

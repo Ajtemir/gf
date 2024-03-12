@@ -23,7 +23,7 @@ public interface IApplicationDbContext
     DbSet<Foreigner> Foreigners { get; }
     DbSet<Entity> Entities { get; }
     
-    DbSet<RewardApplication> RewardApplications { get; }
+    DbSet<Domain.Entities.Application> RewardApplications { get; }
     
     DbSet<Office> Offices { get; }
 
@@ -32,7 +32,7 @@ public interface IApplicationDbContext
     DbSet<Reward> Rewards { get; }
     DbSet<Education> Educations { get; }
     DbSet<Member> Members { get; }
-    DbSet<RewardApplicationStatus> RewardApplicationStatuses { get; }
+    DbSet<ApplicationStatus> RewardApplicationStatuses { get; }
     DbSet<PinAbsenceReason> PinAbsenceReasons { get; }
     DbSet<Document> Documents { get; }
     DbSet<DocumentType> DocumentTypes { get; } 
@@ -47,6 +47,9 @@ public interface IApplicationDbContext
     DbSet<Child> Children { get; }
     DbSet<ChildDocument> ChildDocuments { get; }
     DbSet<ChildDocumentType> ChildDocumentTypes { get; }
+    DbSet<Person> Persons { get; }
+    DbSet<PinEntity> PinEntities { get; }
+    public DbSet<PersonCandidate> PersonCandidates { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

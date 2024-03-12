@@ -37,18 +37,20 @@ public class CreateForeignerCommand : IRequest<ForeignerDto>
             var member = new Member();
             _context.Members.Add(member);
             await _context.SaveChangesAsync(cancellationToken);
-            var foreigner = new Foreigner
+            var person = new Person
             {
                 LastName = request.LastName,
                 FirstName = request.FirstName,
                 PatronymicName = request.PatronymicName,
                 Gender = request.Gender,
-                BirthDate = request.BirthDate,
-                DeathDate = request.DeathDate,
-                CitizenshipId = request.CitizenshipId,
-                MemberId = member.Id,
                 PassportNumber = null,
                 RegisteredAddress = null,
+
+            };
+            var foreigner = new Foreigner
+            {
+                CitizenshipId = request.CitizenshipId,
+                PersonId = member.Id,
             };
             
 

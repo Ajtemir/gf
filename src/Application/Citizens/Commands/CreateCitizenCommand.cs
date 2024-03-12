@@ -47,25 +47,42 @@ public class CreateCitizenCommand : IRequest<CitizenDto>
         public async Task<CitizenDto> Handle(CreateCitizenCommand request, CancellationToken cancellationToken)
         {
             var image = Base64Helper.ConvertImageFromBase64(request.Image);
-            var member = await _context.Members.FirstOrDefaultAsync(x => x.Pin == request.Pin, cancellationToken: cancellationToken);
+            var member = await _context.Persons.FirstOrDefaultAsync(x => x.Pin == request.Pin, cancellationToken: cancellationToken);
             if (member == null)
             {
-                member = new Member { Pin = request.Pin };
-                _context.Members.Add(member);
+                member = new Person
+                {
+                    Pin = request.Pin,
+                    LastName = request.LastName,
+                    FirstName = request.FirstName,
+                    Gender = request.Gender,
+                    PassportNumber = request.PassportNumber,
+                    RegisteredAddress = request.RegisteredAddress
+                };
+                _context.Persons.Add(member);
                 await _context.SaveChangesAsync(cancellationToken);
             }
-            var citizen = new Citizen
+
+            var person = new Person
             {
-                LastName = request.LastName,
-                FirstName = request.FirstName,
-                PatronymicName = request.PatronymicName,
-                MemberId = member.Id,
                 PassportNumber = request.PassportNumber,
                 Gender = request.Gender,
                 BirthDate = request.BirthDate,
                 DeathDate = request.DeathDate,
                 RegisteredAddress = request.RegisteredAddress,
                 ActualAddress = request.ActualAddress,
+                LastName = request.LastName,
+                FirstName = request.FirstName,
+                PatronymicName = request.PatronymicName,
+                Pin = request.Pin,
+                
+            };
+            
+            
+            
+            var citizen = new Citizen
+            {
+                PersonId = member.Id,
                 EducationId = request.EducationId,
                 ScienceDegree = request.ScienceDegree,
                 YearsOfWorkTotal = request.YearsOfWorkTotal,

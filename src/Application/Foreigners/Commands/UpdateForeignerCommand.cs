@@ -42,12 +42,12 @@ public class UpdateForeignerCommand : ICommand
                 throw new NotFoundException(nameof(Foreigner), request.Id);
             }
             
-            foreigner.LastName = request.LastName;
-            foreigner.FirstName = request.FirstName;
-            foreigner.PatronymicName = request.PatronymicName;
-            foreigner.Gender = request.Gender;
-            foreigner.BirthDate = request.BirthDate;
-            foreigner.DeathDate = request.DeathDate;
+            // foreigner.LastName = request.LastName;
+            // foreigner.FirstName = request.FirstName;
+            // foreigner.PatronymicName = request.PatronymicName;
+            // foreigner.Gender = request.Gender;
+            // foreigner.BirthDate = request.BirthDate;
+            // foreigner.DeathDate = request.DeathDate;
             foreigner.CitizenshipId = request.CitizenshipId;
             foreigner.ImageName = request.ImageName;
             foreigner.Image = image;

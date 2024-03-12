@@ -25,12 +25,12 @@ public partial class ChildrenController
 
             var child = new Child
             {
-                FirstName = argument.FirstName,
-                LastName = argument.LastName,
-                PatronymicName = argument.PatronymicName,
-                Gender = argument.Gender,
+                // FirstName = argument.FirstName,
+                // LastName = argument.LastName,
+                // PatronymicName = argument.PatronymicName,
+                // Gender = argument.Gender,
                 IsAdopted = argument.IsAdopted,
-                MemberId = member.Id
+                // MemberId = member.Id
             };
             await _context.Children.AddAsync(child);
             await _context.SaveChangesAsync();

@@ -9,7 +9,13 @@ public static partial class Seed
     private static void ChildSeed(this ModelBuilder builder)
     {
         builder.Entity<Child>().HasData(
-            AytemirUlanbekUulu
+            AytemirUlanbekUuluChild
         );
     }
+    
+    private static Child AytemirUlanbekUuluChild => new()
+    {
+        Id = 1,
+        PersonId = AytemirUlanbekUuluMember.Id
+    };
 }

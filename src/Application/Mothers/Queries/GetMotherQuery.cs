@@ -29,7 +29,7 @@ public class GetMotherQuery : IRequest<MotherDto>
         public async Task<MotherDto> Handle(GetMotherQuery request, CancellationToken cancellationToken)
         {
             var motherDto = await _context.Mothers.AsNoTracking()
-                .Include(x=>x.Member)
+                .Include(x=>x.Person)
                 .Where(x => x.Id == request.Id)
                 .ProjectTo<MotherDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync(cancellationToken);

@@ -50,15 +50,15 @@ public class UpdateCitizenCommand : ICommand
                 throw new NotFoundException(nameof(Citizen), request.Id);
             }
 
-            citizen.LastName = request.LastName;
-            citizen.FirstName = request.FirstName;
-            citizen.PatronymicName = request.PatronymicName;
-            citizen.PassportNumber = request.PassportNumber;
-            citizen.Gender = request.Gender;
-            citizen.BirthDate = request.BirthDate;
-            citizen.DeathDate = request.DeathDate;
-            citizen.RegisteredAddress = request.RegisteredAddress;
-            citizen.ActualAddress = request.ActualAddress;
+            // citizen.LastName = request.LastName;
+            // citizen.FirstName = request.FirstName;
+            // citizen.PatronymicName = request.PatronymicName;
+            // citizen.PassportNumber = request.PassportNumber;
+            // citizen.Gender = request.Gender;
+            // citizen.BirthDate = request.BirthDate;
+            // citizen.DeathDate = request.DeathDate;
+            // citizen.RegisteredAddress = request.RegisteredAddress;
+            // citizen.ActualAddress = request.ActualAddress;
             citizen.EducationId = request.EducationId;
             citizen.ScienceDegree = request.ScienceDegree;
             citizen.YearsOfWorkTotal = request.YearsOfWorkTotal;

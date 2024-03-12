@@ -3,8 +3,7 @@ using Domain.Dictionary;
 
 namespace Domain.Entities;
 
-[Table("Citizens")]
-public class Citizen : Person
+public class Citizen : PersonCandidate
 {
     public int EducationId { get; set; }
     public Education? Education { get; set; }

@@ -10,13 +10,13 @@ public static partial class Seed
         builder.Entity<ApplicationDocument>().HasData(
             new ApplicationDocument
             {
-                ApplicationId = 1,
-                DocumentId = 1,
+                ApplicationId = KaldarbekovaBermetApplication.Id,
+                DocumentId = FirstOptionalChildDocument.Id,
             },
             new ApplicationDocument
             {
-                ApplicationId = 1,
-                DocumentId = 2,
+                ApplicationId = KaldarbekovaBermetApplication.Id,
+                DocumentId = FirstRequiredChildDocument.Id,
             }
         );
     }

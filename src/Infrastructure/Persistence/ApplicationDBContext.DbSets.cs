@@ -8,20 +8,21 @@ public partial class ApplicationDbContext
 {
     public DbSet<ApplicationUserRole> UserRoles { get; set; } = null!;
     public DbSet<Candidate> Candidates { get; set; } = null!;
+    public DbSet<PersonCandidate> PersonCandidates { get; set; } = null!;
     public DbSet<Person> People { get; set; } = null!;
     public DbSet<Citizen> Citizens { get; set; } = null!;
     public DbSet<Mother> Mothers { get; set; } = null!;
     public DbSet<Foreigner> Foreigners { get; set; } = null!;
     public DbSet<Entity> Entities { get; set; } = null!;
 
-    public DbSet<RewardApplication> RewardApplications { get; set; } = null!;
+    public DbSet<Domain.Entities.Application> RewardApplications { get; set; } = null!;
     public DbSet<Office> Offices { get; set; } = null!;
     public DbSet<Position> Positions { get; set; } = null!;
     public DbSet<Citizenship> Citizenships { get; set; } = null!;
     public DbSet<Reward> Rewards { get; set; } = null!;
     public DbSet<Education> Educations { get; set; } = null!;
     public DbSet<Member> Members { get; set; } = null!;
-    public DbSet<RewardApplicationStatus> RewardApplicationStatuses { get; set; } = null!;
+    public DbSet<ApplicationStatus> RewardApplicationStatuses { get; set; } = null!;
     public DbSet<PinAbsenceReason> PinAbsenceReasons { get; set; } = null!;
     public DbSet<Document> Documents { get; set; } = null!;
     public DbSet<DocumentType> DocumentTypes { get; set; } = null!;
@@ -35,4 +36,6 @@ public partial class ApplicationDbContext
     public DbSet<Child> Children { get; set; } = null!;
     public DbSet<ChildDocument> ChildDocuments { get; set; } = null!;
     public DbSet<ChildDocumentType> ChildDocumentTypes { get; set; } = null!;
+    public DbSet<Person> Persons { get; set; } = null!;
+    public DbSet<PinEntity> PinEntities { get; set; } = null!;
 }

@@ -7,7 +7,7 @@ namespace Domain.Entities;
 /// <summary>
 /// An application for government reward.
 /// </summary>
-public class RewardApplication : BaseAuditableEntity
+public class Application : BaseAuditableEntity
 {
     public int RewardId { get; set; }
     public Reward? Reward { get; set; }
@@ -19,6 +19,6 @@ public class RewardApplication : BaseAuditableEntity
     
     public ApplicationUser? CreatedByUser { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }
-    public ICollection<RewardApplicationStatus> RewardApplicationStatuses { get; set; } = new List<RewardApplicationStatus>();
+    public ICollection<ApplicationStatus> RewardApplicationStatuses { get; set; } = new List<ApplicationStatus>();
     public ICollection<ApplicationDocument> ApplicationDocuments { get; set; } = new List<ApplicationDocument>();
 }

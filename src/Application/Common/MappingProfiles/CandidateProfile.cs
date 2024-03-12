@@ -28,7 +28,7 @@ public class CandidateProfile : Profile
             .ForMember(d => d.CitizenshipKg, c => c.MapFrom(s => s.Citizenship!.NameKg));
 
         CreateMap<Mother, MotherDto>()
-            .ForMember(d => d.DeathDate, c => c.MapFrom(s => s.DeathDate));
+            .ForMember(d => d.DeathDate, c => c.MapFrom(s => s.Person.DeathDate));
         CreateMap<Entity, EntityDto>();
     }
 

@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations;
 
-public class RewardApplicationConfiguration : IEntityTypeConfiguration<RewardApplication>
+public class RewardApplicationConfiguration : IEntityTypeConfiguration<Domain.Entities.Application>
 {
-    public void Configure(EntityTypeBuilder<RewardApplication> builder)
+    public void Configure(EntityTypeBuilder<Domain.Entities.Application> builder)
     {
         builder.HasQueryFilter(x => x.CreatedByUser!.IsDeleted == false && x.ModifiedByUser!.IsDeleted == false);
         

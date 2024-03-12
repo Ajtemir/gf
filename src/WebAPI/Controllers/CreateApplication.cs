@@ -12,7 +12,7 @@ public partial class ApplicationsController
     [HttpPost("Create")]
     public async Task<ActionResult> CreateDocument([FromBody]CreateApplicationArgument argument)
     {
-        var application = new RewardApplication
+        var application = new Domain.Entities.Application
         {
             RewardId = argument.RewardId,
             CandidateId = argument.CandidateId,
@@ -21,13 +21,13 @@ public partial class ApplicationsController
         await _context.RewardApplications.AddAsync(application);
         await _context.SaveChangesAsync();
         var officeId = UserOfficeId;
-        var createdStatus = new RewardApplicationStatus
+        var createdStatus = new ApplicationStatus
         {
             ChangeDate = DateTime.Now.SetKindUtc(),
-            RewardApplicationId = application.Id,
+            ApplicationId = application.Id,
             OfficeId = officeId,
             PreviousStatusId = null,
-            Status = RewardApplicationStatusType.Saved,
+            Status = ApplicationStatusType.Saved,
         };
         await _context.RewardApplicationStatuses.AddAsync(createdStatus);
         await _context.SaveChangesAsync();

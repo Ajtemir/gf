@@ -15,7 +15,7 @@ public class Office : BaseAuditableEntity
 
     public ICollection<ApplicationUser> Users { get; set; } = new List<ApplicationUser>();
     public ICollection<UserOffice> UserOffices { get; set; } = new List<UserOffice>();
-    public ICollection<RewardApplicationStatus> RewardApplicationStatuses { get; set; } = new List<RewardApplicationStatus>();
+    public ICollection<ApplicationStatus> RewardApplicationStatuses { get; set; } = new List<ApplicationStatus>();
 
     public ApplicationUser? CreatedByUser { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }

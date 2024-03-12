@@ -17,31 +17,13 @@ public partial class Seed
     private static Mother KaldarbekovaBermet => new()
     {
         Id = 1,
-        Gender = Gender.Female,
         Image = new byte[]{0},
         CreatedAt = DateTime.Now.SetKindUtc(),
         CreatedBy = Admin.Id,
-        MemberId = KaldarbekovaBermetMember.Id,
-        PassportNumber = "ID0241126",
-        FirstName = "Kalicha",
-        LastName = "Askerova",
-        RegisteredAddress = "Street 23",
+        PersonId = KaldarbekovaBermetMember.Id,
         ModifiedBy = Admin.Id,
-        BirthDate = DateOnly.Parse("12.12.2012"),
+        
     };
     
-    private static Child AytemirUlanbekUulu => new()
-    {
-        Id = 2,
-        Gender = GenderType.Male,
-        Image = new byte[]{0},
-        CreatedAt = DateTime.Now.SetKindUtc(),
-        CreatedBy = Admin.Id,
-        MemberId = AytemirUlanbekUuluMember.Id,
-        PassportSeriesNumber = "ID0241126",
-        FirstName = "Aytemir",
-        LastName = "Ulanbek uulu",
-        RegisteredAddress = "Street 23",
-        BirthDate = DateOnly.Parse("18.08.2001"),
-    };
+    
 }

@@ -25,7 +25,7 @@ public class GetCandidateListQuery : IRequest<IEnumerable<CandidateWithoutImageD
                     Id = candidate.Id,
                     CandidateType = candidate.CandidateTypeId,
                     Name = candidate is Entity ? ((Entity)candidate).NameRu :
-                           candidate is Person ? string.Join(' ', ((Person)candidate).LastName, ((Person)candidate).FirstName, ((Person)candidate).PatronymicName) :
+                           candidate is PersonCandidate ? string.Join(' ', ((PersonCandidate)candidate).Person.LastName, ((PersonCandidate)candidate).Person.FirstName, ((PersonCandidate)candidate).Person.PatronymicName) :
                            "",
                     CreatedBy = candidate.CreatedBy,
                     CreatedByUser = candidate.CreatedByUser!.UserName,

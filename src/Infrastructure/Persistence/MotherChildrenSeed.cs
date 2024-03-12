@@ -11,7 +11,7 @@ public static partial class Seed
             new MotherChild
             {
                 MotherId = KaldarbekovaBermet.Id,
-                ChildId = AytemirUlanbekUulu.Id
+                ChildId = AytemirUlanbekUuluChild.Id
             }
         );
     }

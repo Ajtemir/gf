@@ -7,7 +7,7 @@ public class ApplicationDocument
 {
     [ForeignKey(nameof(Application))]
     public int ApplicationId { get; set; }
-    public RewardApplication Application { get; set; } = null!;
+    public Application Application { get; set; } = null!;
     [ForeignKey(nameof(Document))]
     public int DocumentId { get; set; }
     public Document Document { get; set; } = null!;

@@ -38,14 +38,14 @@ public class UpdateMotherCommand : ICommand
                 throw new NotFoundException(nameof(Mother), request.Id);
             }
             
-            mother.LastName = request.LastName;
-            mother.FirstName = request.FirstName;
-            mother.PatronymicName = request.PatronymicName;
-            mother.PassportNumber = request.PassportNumber;
-            mother.BirthDate = request.BirthDate;
-            mother.DeathDate = request.DeathDate;
-            mother.RegisteredAddress = request.RegisteredAddress;
-            mother.ActualAddress = request.ActualAddress;
+            // mother.LastName = request.LastName;
+            // mother.FirstName = request.FirstName;
+            // mother.PatronymicName = request.PatronymicName;
+            // mother.PassportNumber = request.PassportNumber;
+            // mother.BirthDate = request.BirthDate;
+            // mother.DeathDate = request.DeathDate;
+            // mother.RegisteredAddress = request.RegisteredAddress;
+            // mother.ActualAddress = request.ActualAddress;
 
             await _context.SaveChangesAsync(cancellationToken);
             

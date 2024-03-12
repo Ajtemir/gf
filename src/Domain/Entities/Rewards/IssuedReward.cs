@@ -7,5 +7,5 @@ public class IssuedReward
 {
     [Key,ForeignKey((nameof(RewardApplicationStatus)))]
     public int RewardApplicationStatusId { get; set; }
-    public RewardApplicationStatus? RewardApplicationStatus { get; set; }
+    public ApplicationStatus? RewardApplicationStatus { get; set; }
 }

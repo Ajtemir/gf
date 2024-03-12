@@ -31,12 +31,12 @@ public class CandidateWithoutImageProfile : Profile
             .ForMember(d => d.Name, c => c.MapFrom(s => s.NameRu));
     }
     
-    private static Expression<Func<TPerson, string>> MapPersonName<TPerson>() where TPerson : Person =>
+    private static Expression<Func<TPerson, string>> MapPersonName<TPerson>() where TPerson : PersonCandidate =>
         person => string.Join(' ', new []
                 {
-                    person.LastName,
-                    person.FirstName,
-                    person.PatronymicName
+                    person.Person.LastName,
+                    person.Person.FirstName,
+                    person.Person.PatronymicName
                 }
                 .OfType<string>());
 }

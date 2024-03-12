@@ -45,7 +45,7 @@ public partial class ApplicationsController
     {
         public GetApplicationResultProfile()
         {
-            CreateMap<RewardApplication, GetApplicationResult>()
+            CreateMap<Domain.Entities.Application, GetApplicationResult>()
                 .ForMember(d => d.Id, x => x.MapFrom(s => s.Id))
                 .ForMember(d => d.Documents, x => x.MapFrom(s => s.ApplicationDocuments.Select(d=>d.Document)))
                 .ForMember(d => d.Statuses, x => x.MapFrom(s => s.RewardApplicationStatuses))

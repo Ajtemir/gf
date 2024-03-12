@@ -2,7 +2,7 @@
 
 namespace Domain.Enums;
 
-public enum RewardApplicationStatusType
+public enum ApplicationStatusType
 {
     [Display(Name = "Сохраненный")] Saved = 1,
     [Display(Name = "На рассмотрении Секретариата")] Dispatched = 2,
