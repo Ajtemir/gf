@@ -18,5 +18,6 @@ public abstract class Candidate : BaseAuditableEntity
     public ApplicationUser? CreatedByUser { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }
     [JsonIgnore]
-    public ICollection<Application> Applications { get; set; } = new List<Application>();
+    public int? ApplicationId { get; set; } 
+    public Application? Application { get; set; } 
 }

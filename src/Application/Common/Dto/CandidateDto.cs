@@ -1,5 +1,7 @@
 namespace Application.Common.Dto;
 
+using Domain.Entities;
+
 public class CandidateDto
 {
     public int Id { get; set; }
@@ -15,4 +17,5 @@ public class CandidateDto
     public int ModifiedBy { get; set; }
     public string? ModifiedByUser { get; set; }
     public DateTime ModifiedAt { get; set; }
+    public int ApplicationId { get; set; }
 }

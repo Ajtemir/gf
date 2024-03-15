@@ -17,7 +17,6 @@ public static partial class Seed
         SpecialAchievements = "SpecialAchievements",
         Id = 1,
         CreatedBy = Admin.Id,
-        CandidateId = KaldarbekovaBermet.Id,
         RewardId = EneDanky.Id,
         ModifiedBy = Admin.Id,
     };

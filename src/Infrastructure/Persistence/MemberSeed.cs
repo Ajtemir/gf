@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Common.Extensions;
+using Domain.Entities;
 using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,7 @@ public static partial class Seed
         FirstName = "Bermet",
         PassportNumber = "id3232",
         RegisteredAddress = "Archa Beshik",
+        BirthDate = DateOnly.FromDateTime(DateTime.Now)
     };
     
     private static Person AytemirUlanbekUuluMember => new ()

@@ -15,7 +15,6 @@ public partial class ApplicationsController
         var application = new Domain.Entities.Application
         {
             RewardId = argument.RewardId,
-            CandidateId = argument.CandidateId,
             SpecialAchievements = argument.SpecialAchievements,
         };
         await _context.RewardApplications.AddAsync(application);

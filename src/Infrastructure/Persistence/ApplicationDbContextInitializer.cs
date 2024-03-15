@@ -1,3 +1,4 @@
+using Application.Common.Extensions;
 using Domain.Entities;
 using Domain.Enums;
 using Microsoft.AspNetCore.Identity;

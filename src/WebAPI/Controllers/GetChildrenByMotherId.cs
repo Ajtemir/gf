@@ -1,4 +1,5 @@
 ﻿using Application.Common.Dto;
+using Application.Common.Extensions;
 using AutoMapper.QueryableExtensions;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ public partial class ChildrenController
     [HttpGet("[action]")]
     public async Task<ActionResult> GetChildrenByMotherId([FromQuery]GetChildrenMyMotherIdArgument argument)
     {
-        var children = await _context.MotherChildren.Include(x => x.Child)
+        var children = await _context.MotherChildren
+            .Include(x => x.Child)
+            .ThenInclude(x=>x.Person)
             .Where(x => x.MotherId == argument.MotherId)
-            .Select(x=>x.Child)
-            .ToListAsync();
+            .Select(x => x.Child)
+            .ProjectToListAsync<ChildListItemDto>(_mapper.ConfigurationProvider);
         return Ok(children);
     }
 

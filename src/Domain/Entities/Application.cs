@@ -12,7 +12,6 @@ public class Application : BaseAuditableEntity
     public int RewardId { get; set; }
     public Reward? Reward { get; set; }
     
-    public int CandidateId { get; set; }
     public Candidate Candidate { get; set; } = null!;
     
     public required string SpecialAchievements { get; set; }

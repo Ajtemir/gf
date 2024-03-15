@@ -17,18 +17,23 @@ public class CandidateProfile : Profile
             .ForMember(d => d.CandidateType, c => c.MapFrom(s => s.CandidateTypeId))
             .ForMember(d => d.Image, c => c.MapFrom(s => s.Image == null ? null : Convert.ToBase64String(s.Image)))
             .ForMember(d => d.CreatedByUser, c => c.MapFrom(MapCreatedByUser()))
+            .ForMember(d => d.ApplicationId, c => c.MapFrom(s => s.Application!.Id))
             .ForMember(d => d.ModifiedByUser, c => c.MapFrom(MapModifiedByUser()));
         
         CreateMap<Citizen, CitizenDto>()
             .ForMember(d => d.Education, c => c.MapFrom(s =>
-                s.Education!.NameRu));
+                s.Education!.NameRu))
+            .ForMember(d => d.Person, c => c.MapFrom(x=>x.Person))
+            ;
         
         CreateMap<Foreigner, ForeignerDto>()
+            .ForMember(d => d.Person, c => c.MapFrom(x=>x.Person))
             .ForMember(d => d.CitizenshipRu, c => c.MapFrom(s => s.Citizenship!.NameRu))
             .ForMember(d => d.CitizenshipKg, c => c.MapFrom(s => s.Citizenship!.NameKg));
 
         CreateMap<Mother, MotherDto>()
-            .ForMember(d => d.DeathDate, c => c.MapFrom(s => s.Person.DeathDate));
+            .ForMember(d => d.Person, c => c.MapFrom(x => x.Person))
+            ;
         CreateMap<Entity, EntityDto>();
     }
 
