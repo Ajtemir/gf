@@ -56,7 +56,6 @@ public class CreateCitizenCommand : IRequest<CitizenDto>
                     LastName = request.LastName,
                     FirstName = request.FirstName,
                     Gender = request.Gender,
-                    PassportNumber = request.PassportNumber,
                     RegisteredAddress = request.RegisteredAddress
                 };
                 _context.Persons.Add(member);
@@ -65,7 +64,6 @@ public class CreateCitizenCommand : IRequest<CitizenDto>
 
             var person = new Person
             {
-                PassportNumber = request.PassportNumber,
                 Gender = request.Gender,
                 BirthDate = request.BirthDate,
                 DeathDate = request.DeathDate,

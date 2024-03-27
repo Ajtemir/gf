@@ -17,6 +17,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="Serilog.AspNetCore" />
         <PackageReference Include="Serilog.Exceptions" />
         <PackageReference Include="Serilog.Settings.Configuration" />
@@ -71,6 +72,21 @@
       </Compile>
       <Compile Update="Controllers\GetDocumentsByChildId.cs">
         <DependentUpon>DocumentsController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\CreateMember.cs">
+        <DependentUpon>MembersController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetPersonDataByPin.cs">
+        <DependentUpon>MembersController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetPersons.cs">
+        <DependentUpon>MembersController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetPersonById.cs">
+        <DependentUpon>MembersController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetCandidatesByPersonId.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
       </Compile>
     </ItemGroup>
 

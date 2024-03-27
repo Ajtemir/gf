@@ -19,6 +19,11 @@ public static class CollectionExtensions
         if(elem == null) throw new NotFoundException(errorMessage ?? $"Not found entity {nameof(T)}");
         return elem;
     }
+    public static async Task ErrorIfExistsAsync<T>(this IQueryable<T> source, Expression<Func<T, bool>>? predicate = null, string? errorMessage = null) where T: class
+    {
+        var elem = predicate == null ? await source.FirstOrDefaultAsync() : await source.FirstOrDefaultAsync(predicate);
+        if(elem != null) throw new NotFoundException(errorMessage ?? $"Exists {nameof(T)}");
+    }
 
     public static bool NotContains<T>(this ICollection<T> source, T searched) => !source.Contains(searched);
     public static bool IsEmpty<T>(this ICollection<T> source) => !source.Any();

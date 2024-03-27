@@ -38,4 +38,6 @@ public partial class ApplicationDbContext
     public DbSet<ChildDocumentType> ChildDocumentTypes { get; set; } = null!;
     public DbSet<Person> Persons { get; set; } = null!;
     public DbSet<PinEntity> PinEntities { get; set; } = null!;
+    public DbSet<MemberType> MemberTypes { get; set; } = null!;
+    public DbSet<Avatar> Avatars { get; set; } = null!;
 }

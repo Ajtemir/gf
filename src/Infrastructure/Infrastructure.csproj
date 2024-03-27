@@ -88,6 +88,12 @@
       <Compile Update="Persistence\ChildSeed.cs">
         <DependentUpon>AllSeed.cs</DependentUpon>
       </Compile>
+      <Compile Update="Persistence\MemberTypeSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\AvatarSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

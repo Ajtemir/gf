@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Entities;
@@ -12,4 +13,6 @@ public class Member
     public string? Pin { get; set; }
     public int? AvatarId { get; set; }
     public Avatar? Avatar { get; set; }
+    public string MemberTypeId { get; set; } = null!;
+    public MemberType MemberType { get; set; } = null!;
 }

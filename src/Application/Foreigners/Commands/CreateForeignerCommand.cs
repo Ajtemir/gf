@@ -43,7 +43,6 @@ public class CreateForeignerCommand : IRequest<ForeignerDto>
                 FirstName = request.FirstName,
                 PatronymicName = request.PatronymicName,
                 Gender = request.Gender,
-                PassportNumber = null,
                 RegisteredAddress = null,
 
             };

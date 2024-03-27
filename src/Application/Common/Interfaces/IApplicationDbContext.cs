@@ -50,6 +50,8 @@ public interface IApplicationDbContext
     DbSet<Person> Persons { get; }
     DbSet<PinEntity> PinEntities { get; }
     public DbSet<PersonCandidate> PersonCandidates { get; }
+    public DbSet<MemberType> MemberTypes { get; }
+    public DbSet<Avatar> Avatars { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

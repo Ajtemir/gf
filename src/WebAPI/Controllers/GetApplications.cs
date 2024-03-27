@@ -1,4 +1,6 @@
-﻿using Application.Common.Extensions;
+﻿using Application.Common.Dto;
+using Application.Common.Extensions;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +14,7 @@ public partial class ApplicationsController
         var applications = await _context.RewardApplications
             .Include(x=>x.Reward)
             .Include(x=>x.Candidate)
+            .ProjectTo<ApplicationDto>(_mapper.ConfigurationProvider)
             .ToPaginatedListAsync(pageNumber, pageSize);
         return Ok(applications);
     }

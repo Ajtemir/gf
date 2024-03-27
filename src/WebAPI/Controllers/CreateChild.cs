@@ -18,7 +18,7 @@ public partial class ChildrenController
             var member = await _context.Members.FirstOrDefaultAsync(x => x.Pin == argument.Pin);
             if (member == null)
             {
-                member = new Member { Pin = argument.Pin };
+                member = new Member { Pin = argument.Pin, };
                 await _context.Members.AddAsync(member);
                 await _context.SaveChangesAsync();
             }

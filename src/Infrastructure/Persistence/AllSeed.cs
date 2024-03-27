@@ -6,6 +6,8 @@ public static partial class Seed
 {
     public static void AllSeed(this ModelBuilder builder)
     {
+        builder.AvatarSeed();
+        builder.MemberTypeSeed();
         builder.RoleSeed();
         builder.UserSeed();
         builder.OfficeSeed();

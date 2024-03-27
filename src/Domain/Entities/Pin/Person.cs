@@ -12,8 +12,8 @@ public class Person : Member
     public DateOnly BirthDate { get; set; }
     public DateOnly? DeathDate { get; set; }
     public string? BirthPlace { get; set; }
-    public string? PassportSeries { get; set; }
-    public required string? PassportNumber { get; set; }
+    public string? PassportSeriesNumber { get; set; }
     public required string? RegisteredAddress { get; set; }
     public string? ActualAddress { get; set; }
+    public ICollection<PersonCandidate> PersonCandidates { get; set; } = new List<PersonCandidate>();
 }

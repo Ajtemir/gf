@@ -6,8 +6,10 @@ using Application.Common.Dto;
 using Application.Entities.Queries;
 using Application.Foreigners.Queries;
 using Application.Mothers.Queries;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Extensions;
@@ -16,7 +18,7 @@ namespace WebAPI.Controllers;
 
 [Authorize]
 [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-public class CandidatesController : ApiControllerBase
+public partial class CandidatesController : BaseApiController
 {
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -52,5 +54,9 @@ public class CandidatesController : ApiControllerBase
         var deleteCandidateCommand = new DeleteCandidateCommand() { Id = id };
         await Mediator.Send(deleteCandidateCommand, cancellationToken);
         return NoContent();
+    }
+
+    public CandidatesController(ApplicationDbContext context, IMapper mapper) : base(context, mapper)
+    {
     }
 }

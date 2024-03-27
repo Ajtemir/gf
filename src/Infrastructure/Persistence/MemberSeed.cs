@@ -21,12 +21,12 @@ public static partial class Seed
         Pin = "12812197500736",
         Avatar = null,
         Gender = Gender.Female,
-        AvatarId = null,
+        AvatarId = FirstAvatar.Id,
         LastName = "Kaldarbekova",
         FirstName = "Bermet",
-        PassportNumber = "id3232",
+        PassportSeriesNumber = "id3232",
         RegisteredAddress = "Archa Beshik",
-        BirthDate = DateOnly.FromDateTime(DateTime.Now)
+        BirthDate = DateOnly.FromDateTime(DateTime.Now),
     };
     
     private static Person AytemirUlanbekUuluMember => new ()
@@ -36,7 +36,7 @@ public static partial class Seed
         LastName = "Ulanbek uulu",
         FirstName = "Aytemir",
         Gender = Gender.Male,
-        PassportNumber = "A23423",
+        PassportSeriesNumber = "A23423",
         RegisteredAddress = "dsgdsfg",
     };
 }
