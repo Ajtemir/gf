@@ -15,7 +15,7 @@ public class Document
     [ForeignKey(nameof(DocumentType))]
     public int DocumentTypeId { get; set; }
     public DocumentType DocumentType { get; set; } = null!;
-    public string? Extension => Path.GetExtension(this.Name)?.Remove(0);
+    public string? Extension => Path.GetExtension(this.Name)?.Remove(0,1);
     public string? ContentType => Extension is null ? null : $"application/${Extension}";
     public ChildDocument ChildDocument { get; set; } = null!;
     public ApplicationDocument ApplicationDocument { get; set; } = null!;

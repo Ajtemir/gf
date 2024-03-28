@@ -19,7 +19,8 @@ public class PersonProfile : Profile
             .ForMember(d => d.Pin, c => c.MapFrom(s => s.Pin))
             .ForMember(d => d.ActualAddress, c => c.MapFrom(s => s.ActualAddress))
             .ForMember(d => d.RegisteredAddress, c => c.MapFrom(s => s.RegisteredAddress))
-            .ForMember(d => d.PassportSeries, c => c.MapFrom(s => s.PassportSeriesNumber))
+            .ForMember(d => d.PassportSeriesNumber, c => c.MapFrom(s => s.PassportSeriesNumber))
+            .ForMember(d => d.AvatarId, c => c.MapFrom(s => s.AvatarId))
             ;
     }
 }

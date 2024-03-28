@@ -9,12 +9,12 @@ public class PersonDto
     public required string FirstName { get; set; }
     public string? PatronymicName { get; set; }
     public string? Pin { get; set; }
-    public string? PassportNumber { get; set; }
-    public string? PassportSeries { get; set; }
+    public string? PassportSeriesNumber { get; set; }
     public required Gender Gender { get; set; }
     public DateOnly BirthDate { get; set; }
     public DateOnly? DeathDate { get; set; }
     public required string RegisteredAddress { get; set; }
     public string? ActualAddress { get; set; }
     public string Fullname { get; set; }
+    public int? AvatarId { get; set; }
 }

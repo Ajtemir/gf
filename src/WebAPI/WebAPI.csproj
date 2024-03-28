@@ -88,6 +88,12 @@
       <Compile Update="Controllers\GetCandidatesByPersonId.cs">
         <DependentUpon>CandidatesController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\UpdatePerson.cs">
+        <DependentUpon>MembersController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetImage.cs">
+        <DependentUpon>ImagesController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
