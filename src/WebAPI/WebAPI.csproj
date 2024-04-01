@@ -97,6 +97,9 @@
       <Compile Update="Controllers\UpdateImage.cs">
         <DependentUpon>ImagesController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\GetChildrenByPinFromZags.cs">
+        <DependentUpon>ChildrenController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
