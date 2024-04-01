@@ -94,6 +94,9 @@
       <Compile Update="Controllers\GetImage.cs">
         <DependentUpon>ImagesController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\UpdateImage.cs">
+        <DependentUpon>ImagesController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
