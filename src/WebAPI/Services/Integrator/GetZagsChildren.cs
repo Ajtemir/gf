@@ -16,10 +16,10 @@ public class GetZagsChildren : BaseIntegrator<ArgumentPin, GetZagsChildrenResult
 public class GetZagsChildrenResult
 {
     [JsonProperty("children")]
-    public List<Child> Children { get; set; }
+    public List<ChildZags> Children { get; set; }
 }
 
-public class Child
+public class ChildZags
 {
     [JsonProperty("pin")]
     public string Pin { get; set; }
