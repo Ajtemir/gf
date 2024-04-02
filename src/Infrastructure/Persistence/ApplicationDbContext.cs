@@ -39,7 +39,7 @@ public partial class ApplicationDbContext : IdentityDbContext<ApplicationUser, A
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        await _mediator.DispatchDomainEvents(this);
+        // await _mediator.DispatchDomainEvents(this);
 
         return await base.SaveChangesAsync(cancellationToken);
     }

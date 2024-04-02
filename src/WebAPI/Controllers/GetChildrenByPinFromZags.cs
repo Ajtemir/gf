@@ -20,7 +20,8 @@ public partial class ChildrenController
         if (mother.Person.Pin == null)
             throw new BadRequestException("Candidate has not a pin");
         var zagsChildrenResult = await new GetZagsChildren(new ArgumentPin { Pin = long.Parse(mother.Person.Pin) }).ExecuteAsync();
-        var persons = zagsChildrenResult.Children.Select(async child =>
+        var childList = new List<Child>();
+        foreach (var child in zagsChildrenResult.Children)
         {
             var existPerson = await _context.Persons.AsNoTracking().FirstOrDefaultAsync(x => x.Pin == child.Pin);
             if (existPerson != null)
@@ -28,13 +29,15 @@ public partial class ChildrenController
                 var foundChild = await _context.Children.FirstOrDefaultAsync(x => x.PersonId == existPerson.Id);
                 if (foundChild != null)
                 {
-                    return foundChild;
+                    childList.Add(foundChild);
+                    continue;
                 }
 
                 var createdChild = new Child { PersonId = existPerson.Id, };
                 await _context.Children.AddAsync(createdChild);
                 await _context.SaveChangesAsync();
-                return createdChild;
+                childList.Add(createdChild);
+                continue;
             }
             var pin = new ArgumentPin
             {
@@ -88,18 +91,17 @@ public partial class ChildrenController
                 });
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
-                return createdChild;
+                childList.Add(createdChild);
+                
             }
             catch (Exception e)
             {
                 await transaction.RollbackAsync();
                 throw new BadRequestException(e.Message);
             }
-        });
+        }
         
-        var children = await Task.WhenAll(persons);
-
-        await _context.MotherChildren.AddRangeAsync(children.Select(x=>new MotherChild
+        await _context.MotherChildren.AddRangeAsync(childList.Select(x=>new MotherChild
         {
             ChildId = x.Id,
             MotherId = mother.Id,
