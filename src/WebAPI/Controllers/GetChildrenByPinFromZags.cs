@@ -1,6 +1,7 @@
 ﻿using Application.Common.Exceptions;
 using Domain.Entities;
 using Domain.Enums;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,6 @@ public partial class ChildrenController
         if (mother.Person.Pin == null)
             throw new BadRequestException("Candidate has not a pin");
         var zagsChildrenResult = await new GetZagsChildren(new ArgumentPin { Pin = long.Parse(mother.Person.Pin) }).ExecuteAsync();
-        var childList = new List<Child>();
         foreach (var child in zagsChildrenResult.Children)
         {
             var existPerson = await _context.Persons.AsNoTracking().FirstOrDefaultAsync(x => x.Pin == child.Pin);
@@ -29,88 +29,75 @@ public partial class ChildrenController
                 var foundChild = await _context.Children.FirstOrDefaultAsync(x => x.PersonId == existPerson.Id);
                 if (foundChild != null)
                 {
-                    childList.Add(foundChild);
-                    continue;
+                    var motherChild =
+                        await _context.MotherChildren.FirstOrDefaultAsync(x =>
+                            x.MotherId == mother.Id && x.ChildId == foundChild.Id);
+                    if (motherChild == null)
+                    {
+                        await _context.MotherChildren.AddAsync(new MotherChild
+                        {
+                            MotherId = mother.Id, ChildId = foundChild.Id
+                        });
+                        await _context.SaveChangesAsync();
+                    }
                 }
-
-                var createdChild = new Child { PersonId = existPerson.Id, };
-                await _context.Children.AddAsync(createdChild);
-                await _context.SaveChangesAsync();
-                childList.Add(createdChild);
-                continue;
+                else
+                {
+                    var createdChild = new Child { PersonId = existPerson.Id, };
+                    await _context.SaveChildWithDocumentsAsync(createdChild);
+                    await _context.AddChildToMotherIfNotExistsAsync(createdChild, mother.Id);
+                }
             }
-            var pin = new ArgumentPin
+            else
             {
-                Pin = long.Parse(child.Pin)
-            };
-            var passportInfo = await new GetPassportInfoByPin(pin).ExecuteAsync();
-            var addressByPin = await new GetAddressByPin(pin).ExecuteAsync();
-            var zagsInfo = await new GetZagsByPin(pin).ExecuteAsync();
-            var photoList = await new GetPhotoByPin(pin).ExecuteAsync();
-            var lastPhoto = photoList.Photos.LastOrDefault()?.PersonImage;
-            var passportSeriesNumber = passportInfo.PassportSeries?.ToUpper() + passportInfo.PassportNumber;
-            var avatar = lastPhoto == null ? null : new Avatar
-            {
-                ImageName = $"{pin.Pin}.jpeg",
-                Image = Convert.FromBase64String(lastPhoto)
-            };
-            var person = new Person
-            {
-                LastName = zagsInfo.Surname,
-                FirstName = zagsInfo.Name,
-                Gender = zagsInfo.Gender == 1 ? Gender.Male : Gender.Female,
-                PassportSeriesNumber = passportSeriesNumber,
-                RegisteredAddress = addressByPin.Data.CurrentAddress.Address,
-                ActualAddress = null,
-                Pin = child.Pin,
-                BirthDate = DateOnly.FromDateTime(zagsInfo.Birthdate.Date),
-                Avatar = avatar
-            };
-            await using var transaction = await _context.Database.BeginTransactionAsync();
-            try
-            {
-                if (avatar != null)
-                {
-                    await _context.Avatars.AddAsync(avatar);
-                    await _context.SaveChangesAsync();
-                    person.AvatarId = avatar.Id;
-                }
 
-                await _context.Persons.AddAsync(person);
-                await _context.SaveChangesAsync();
-                var createdChild = new Child
+                var pin = new ArgumentPin { Pin = long.Parse(child.Pin) };
+                var passportInfo = await new GetPassportInfoByPin(pin).ExecuteAsync();
+                var addressByPin = await new GetAddressByPin(pin).ExecuteAsync();
+                var zagsInfo = await new GetZagsByPin(pin).ExecuteAsync();
+                var photoList = await new GetPhotoByPin(pin).ExecuteAsync();
+                var lastPhoto = photoList.Photos.LastOrDefault()?.PersonImage;
+                var passportSeriesNumber = passportInfo.PassportSeries?.ToUpper() + passportInfo.PassportNumber;
+                var avatar = lastPhoto == null
+                    ? null
+                    : new Avatar { ImageName = $"{pin.Pin}.jpeg", Image = Convert.FromBase64String(lastPhoto) };
+                var person = new Person
                 {
-                    PersonId = person.Id,
+                    LastName = zagsInfo.Surname,
+                    FirstName = zagsInfo.Name,
+                    Gender = zagsInfo.Gender == 1 ? Gender.Male : Gender.Female,
+                    PassportSeriesNumber = passportSeriesNumber,
+                    RegisteredAddress = addressByPin.Data.CurrentAddress.Address,
+                    ActualAddress = null,
+                    Pin = child.Pin,
+                    BirthDate = DateOnly.FromDateTime(zagsInfo.Birthdate.Date),
+                    Avatar = avatar
                 };
-                await _context.Children.AddAsync(createdChild);
-                await _context.SaveChangesAsync();
-                await _context.MotherChildren.AddAsync(new MotherChild
+                await using var transaction = await _context.Database.BeginTransactionAsync();
+                try
                 {
-                    MotherId = mother.Id,
-                    ChildId = createdChild.Id,
-                });
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-                childList.Add(createdChild);
-                
-            }
-            catch (Exception e)
-            {
-                await transaction.RollbackAsync();
-                throw new BadRequestException(e.Message);
+                    if (avatar != null)
+                    {
+                        await _context.Avatars.AddAsync(avatar);
+                        await _context.SaveChangesAsync();
+                        person.AvatarId = avatar.Id;
+                    }
+
+                    await _context.Persons.AddAsync(person);
+                    await _context.SaveChangesAsync();
+                    var createdChild = new Child { PersonId = person.Id, };
+                    await _context.SaveChildWithDocumentsAsync(createdChild);
+                    await _context.AddChildToMotherIfNotExistsAsync(createdChild, mother.Id);
+                    await transaction.CommitAsync();
+                }
+                catch (Exception e)
+                {
+                    await transaction.RollbackAsync();
+                    throw new BadRequestException(e.Message);
+                }
             }
         }
-        
-        await _context.MotherChildren.AddRangeAsync(childList.Select(x=>new MotherChild
-        {
-            ChildId = x.Id,
-            MotherId = mother.Id,
-        }));
-        await _context.SaveChangesAsync();
-        var result = await _context.MotherChildren
-            .Include(x => x.Child).Where(x => x.MotherId == mother.Id)
-            .Select(x=>x.Child).ToListAsync();
-        return Ok(result);
+        return Ok();
     }
 
     public class GetChildrenByPinFromZagsArgument

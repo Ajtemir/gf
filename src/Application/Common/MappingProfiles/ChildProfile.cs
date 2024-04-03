@@ -13,5 +13,10 @@ public class ChildProfile : Profile
             .ForMember(d => d.Gender, c => c.MapFrom(x=>x.Person.Gender))
             .ForMember(d => d.FullName, c => c.MapFrom(x => string.Join(' ', x.Person.LastName, x.Person.FirstName, x.Person.PatronymicName)))
             ;
+
+        CreateMap<Child, ChildInfoDto>()
+            .ForMember(d => d.Person, c => c.MapFrom(x => x.Person))
+            .ForMember(d => d.MotherId, c => c.MapFrom(x=>x.MotherChild.MotherId))
+            ;
     }
 }

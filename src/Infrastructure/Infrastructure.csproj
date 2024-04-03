@@ -94,6 +94,12 @@
       <Compile Update="Persistence\AvatarSeed.cs">
         <DependentUpon>AllSeed.cs</DependentUpon>
       </Compile>
+      <Compile Update="Persistence\AddChildWithDocuments.cs">
+        <DependentUpon>DbContextExtensions.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Persistence\AddChildToMother.cs">
+        <DependentUpon>DbContextExtensions.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
