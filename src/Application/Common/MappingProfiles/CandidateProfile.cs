@@ -27,13 +27,13 @@ public class CandidateProfile : Profile
             ;
         
         CreateMap<Foreigner, ForeignerDto>()
-            .ForMember(d => d.Person, c => c.MapFrom(x=>x.Person))
             .ForMember(d => d.CitizenshipRu, c => c.MapFrom(s => s.Citizenship!.NameRu))
             .ForMember(d => d.CitizenshipKg, c => c.MapFrom(s => s.Citizenship!.NameKg));
 
-        CreateMap<Mother, MotherDto>()
+        CreateMap<PersonCandidate, PersonCandidateDto>()
             .ForMember(d => d.Person, c => c.MapFrom(x => x.Person))
             ;
+        CreateMap<Mother, MotherDto>();
         CreateMap<Entity, EntityDto>();
     }
 

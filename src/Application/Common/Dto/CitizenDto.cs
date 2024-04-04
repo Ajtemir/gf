@@ -2,7 +2,7 @@ using Domain.Enums;
 
 namespace Application.Common.Dto;
 
-public class CitizenDto : CandidateDto
+public class CitizenDto : PersonCandidateDto
 {
     
     public int YearsOfWorkTotal { get; set; }
@@ -11,5 +11,5 @@ public class CitizenDto : CandidateDto
     public int EducationId { get; set; }
     public string? Education { get; set; }
     public string? ScienceDegree { get; set; }
-    public PersonDto Person { get; set; }
+    
 }

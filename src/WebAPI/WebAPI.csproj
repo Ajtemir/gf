@@ -103,6 +103,9 @@
       <Compile Update="Controllers\GetChild.cs">
         <DependentUpon>ChildrenController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\GetCandidates.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

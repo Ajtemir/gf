@@ -15,5 +15,6 @@ public class Person : Member
     public string? PassportSeriesNumber { get; set; }
     public required string? RegisteredAddress { get; set; }
     public string? ActualAddress { get; set; }
+    public string Fullname => string.Join(' ', LastName, FirstName, PatronymicName);
     public ICollection<PersonCandidate> PersonCandidates { get; set; } = new List<PersonCandidate>();
 }
