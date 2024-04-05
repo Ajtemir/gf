@@ -15,8 +15,8 @@ public partial class CandidatesController
     public async Task<ActionResult> GetCandidates([FromQuery]GetCandidatesArgument argument)
     {
         var candidates = await _context.PersonCandidates.Include(x=>x.Person)
-            .Where(x => x.Person.Pin != null && (argument.Pin == null || x.Person.Pin.Contains(argument.Pin)
-                || argument.Fullname == null || (x.Person.LastName + ' ' + x.Person.FirstName + ' ' + x.Person.PatronymicName).Contains(argument.Fullname)))
+            .Where(x => (argument.Pin == null || (x.Person.Pin != null && x.Person.Pin.Contains(argument.Pin)))
+                && (argument.Fullname == null || (x.Person.LastName + ' ' + x.Person.FirstName + ' ' + x.Person.PatronymicName).Contains(argument.Fullname)))
             .ProjectTo<PersonCandidateDto>(_mapper.ConfigurationProvider)
             .ToPaginatedListAsync(argument.PageNumber, argument.PageSize);
         return Ok(candidates);
