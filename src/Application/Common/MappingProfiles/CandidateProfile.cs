@@ -11,6 +11,7 @@ public class CandidateProfile : Profile
     {
         CreateMap<Candidate, CandidateDto>()
             .Include<Citizen, CitizenDto>()
+            .Include<PersonCandidate, PersonCandidateDto>()
             .Include<Mother, MotherDto>()
             .Include<Foreigner, ForeignerDto>()
             .Include<Entity, EntityDto>()
@@ -31,6 +32,7 @@ public class CandidateProfile : Profile
             .ForMember(d => d.CitizenshipKg, c => c.MapFrom(s => s.Citizenship!.NameKg));
 
         CreateMap<PersonCandidate, PersonCandidateDto>()
+            .ForMember(d => d.Name, c => c.MapFrom(x => x.Person.Fullname))
             .ForMember(d => d.Person, c => c.MapFrom(x => x.Person))
             ;
         CreateMap<Mother, MotherDto>();

@@ -1,6 +1,7 @@
 ﻿using Application.Common.Dto;
 using Application.Common.Extensions;
 using AutoMapper.QueryableExtensions;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,7 @@ public partial class CandidatesController
         var candidates = await _context.PersonCandidates.Include(x=>x.Person)
             .Where(x => x.Person.Pin != null && (argument.Pin == null || x.Person.Pin.Contains(argument.Pin)
                 || argument.Fullname == null || (x.Person.LastName + ' ' + x.Person.FirstName + ' ' + x.Person.PatronymicName).Contains(argument.Fullname)))
-            .ProjectTo<CandidateDto>(_mapper.ConfigurationProvider)
+            .ProjectTo<PersonCandidateDto>(_mapper.ConfigurationProvider)
             .ToPaginatedListAsync(argument.PageNumber, argument.PageSize);
         return Ok(candidates);
     }
