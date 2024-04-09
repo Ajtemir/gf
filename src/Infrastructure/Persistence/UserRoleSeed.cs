@@ -10,8 +10,8 @@ public static partial class Seed
         builder.Entity<ApplicationUserRole>().HasData(
             new ApplicationUserRole
             {
-                RoleId = 1,
-                UserId = 1,
+                RoleId = AdministratorRole.Id,
+                UserId = Admin.Id,
             }
         );
     }

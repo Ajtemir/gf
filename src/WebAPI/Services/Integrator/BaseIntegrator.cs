@@ -10,7 +10,7 @@ public abstract class BaseIntegrator<TArgument, TOutput>
     where TArgument : class 
     where TOutput : class
 {
-    private readonly TArgument _arguments;
+    protected readonly TArgument _arguments;
     private const string UrlAddress = "https://integrator2.srs.kg/ws/claim";
 
     protected BaseIntegrator(TArgument arguments)
@@ -21,7 +21,7 @@ public abstract class BaseIntegrator<TArgument, TOutput>
     protected virtual string Secret => "lYo63sIXyBsHZ17E";
     protected abstract string Service { get; }
     protected virtual Expression<Func<TOutput, object>>[]? RequiredJsonProperties => null;
-    public async Task<TOutput> ExecuteAsync()
+    public virtual async Task<TOutput> ExecuteAsync()
     {
         try
         {

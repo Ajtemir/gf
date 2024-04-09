@@ -44,7 +44,7 @@ public sealed class ApplicationUser : IdentityUser<int>, ISoftDeleteEntity
     /// </summary>
     public int? CreatedBy { get; set; }
     public ApplicationUser? CreatedByUser { get; set; }
-    public required DateTime CreatedAt { get; set; }
+    public required DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
 
     /// <summary>
@@ -52,7 +52,7 @@ public sealed class ApplicationUser : IdentityUser<int>, ISoftDeleteEntity
     /// </summary>
     public int? ModifiedBy { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }
-    public required DateTime ModifiedAt { get; set; }
+    public required DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
     
     public byte[]? Image { get; set; }
     

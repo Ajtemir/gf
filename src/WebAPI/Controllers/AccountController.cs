@@ -1,14 +1,18 @@
 using Application.Account.Commands;
 using Application.Account.Queries;
 using Application.Common.Dto;
+using AutoMapper;
+using Domain.Entities;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
 [Authorize]
 [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-public class AccountController : ApiControllerBase
+public partial class AccountController : BaseApiController
 {
     [HttpPost("login")]
     [AllowAnonymous]
@@ -54,5 +58,15 @@ public class AccountController : ApiControllerBase
         var userDto = await Mediator.Send(new GetCurrentUserQuery(), cancellationToken);
 
         return userDto;
+    }
+
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly RoleManager<ApplicationRole> _roleManager;
+    public AccountController(ApplicationDbContext context, IMapper mapper, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager) : base(context, mapper)
+    {
+        _userManager = userManager;
+        _signInManager = signInManager;
+        _roleManager = roleManager;
     }
 }
