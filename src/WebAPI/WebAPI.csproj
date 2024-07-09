@@ -109,6 +109,21 @@
       <Compile Update="Controllers\AuthInfocom.cs">
         <DependentUpon>AccountController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\UpdateCandidatePersonData.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetCandidateGeneralData.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetCandidateSpecificData.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\UpdateCandidateSpecificData.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetCandidateAvatar.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

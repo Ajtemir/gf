@@ -5,17 +5,17 @@ namespace Infrastructure.Persistence;
 
 public static partial class Seed
 {
-    private static void ApplicationDocumentSeed(this ModelBuilder builder)
+    private static void CandidateDocumentSeed(this ModelBuilder builder)
     {
-        builder.Entity<ApplicationDocument>().HasData(
-            new ApplicationDocument
+        builder.Entity<CandidateDocument>().HasData(
+            new CandidateDocument
             {
-                ApplicationId = KaldarbekovaBermetApplication.Id,
+                CandidateId = KaldarbekovaBermetCandidate.Id,
                 DocumentId = FirstOptionalChildDocument.Id,
             },
-            new ApplicationDocument
+            new CandidateDocument
             {
-                ApplicationId = KaldarbekovaBermetApplication.Id,
+                CandidateId = KaldarbekovaBermetCandidate.Id,
                 DocumentId = FirstRequiredChildDocument.Id,
             }
         );

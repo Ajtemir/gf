@@ -6,6 +6,8 @@ public static partial class Seed
 {
     public static void AllSeed(this ModelBuilder builder)
     {
+        builder.CitizenshipSeed();
+        builder.EducationSeed();
         builder.AvatarSeed();
         builder.MemberTypeSeed();
         builder.RoleSeed();
@@ -21,10 +23,10 @@ public static partial class Seed
         builder.RewardDocumentTypesSeed();
         builder.PersonSeed();
         builder.CandidateSeed();
-        builder.ApplicationSeed();
+        // builder.ApplicationSeed();
         builder.DocumentSeed();
         builder.ChildDocumentSeed();
-        builder.ApplicationDocumentSeed();
+        builder.CandidateDocumentSeed();
         builder.StatusSeed();
         builder.ChildSeed();
         builder.MotherChildrenSeed();

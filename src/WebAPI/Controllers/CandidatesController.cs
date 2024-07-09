@@ -16,7 +16,7 @@ using Microsoft.OpenApi.Extensions;
 
 namespace WebAPI.Controllers;
 
-[Authorize]
+// [Authorize]
 [ProducesResponseType(StatusCodes.Status401Unauthorized)]
 public partial class CandidatesController : BaseApiController
 {

@@ -15,14 +15,14 @@ public partial class ApplicationDbContext
     public DbSet<Foreigner> Foreigners { get; set; } = null!;
     public DbSet<Entity> Entities { get; set; } = null!;
 
-    public DbSet<Domain.Entities.Application> RewardApplications { get; set; } = null!;
+    // public DbSet<Domain.Entities.Application> RewardApplications { get; set; } = null!;
     public DbSet<Office> Offices { get; set; } = null!;
     public DbSet<Position> Positions { get; set; } = null!;
     public DbSet<Citizenship> Citizenships { get; set; } = null!;
     public DbSet<Reward> Rewards { get; set; } = null!;
     public DbSet<Education> Educations { get; set; } = null!;
     public DbSet<Member> Members { get; set; } = null!;
-    public DbSet<ApplicationStatus> RewardApplicationStatuses { get; set; } = null!;
+    public DbSet<CandidateStatus> RewardApplicationStatuses { get; set; } = null!;
     public DbSet<PinAbsenceReason> PinAbsenceReasons { get; set; } = null!;
     public DbSet<Document> Documents { get; set; } = null!;
     public DbSet<DocumentType> DocumentTypes { get; set; } = null!;
@@ -32,7 +32,7 @@ public partial class ApplicationDbContext
     public DbSet<MotherChild> MotherChildren { get; set; } = null!;
     public DbSet<CandidateTypeReward> CandidateTypesRewards { get; set; } = null!;
     public DbSet<UserOffice> UserOffices { get; set; } = null!;
-    public DbSet<ApplicationDocument> ApplicationDocuments { get; set; } = null!;
+    public DbSet<CandidateDocument> ApplicationDocuments { get; set; } = null!;
     public DbSet<Child> Children { get; set; } = null!;
     public DbSet<ChildDocument> ChildDocuments { get; set; } = null!;
     public DbSet<ChildDocumentType> ChildDocumentTypes { get; set; } = null!;

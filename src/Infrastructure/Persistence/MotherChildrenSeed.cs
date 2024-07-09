@@ -10,7 +10,7 @@ public static partial class Seed
         builder.Entity<MotherChild>().HasData(
             new MotherChild
             {
-                MotherId = KaldarbekovaBermet.Id,
+                MotherId = KaldarbekovaBermetCandidate.Id,
                 ChildId = AytemirUlanbekUuluChild.Id
             }
         );

@@ -100,6 +100,9 @@
       <Compile Update="Persistence\AddChildToMother.cs">
         <DependentUpon>DbContextExtensions.cs</DependentUpon>
       </Compile>
+      <Compile Update="Persistence\EducationSeed.cs">
+        <DependentUpon>AllSeed.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

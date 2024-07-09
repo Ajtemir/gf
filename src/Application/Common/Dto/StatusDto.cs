@@ -9,8 +9,8 @@ namespace WebAPI.Controllers;
 public class StatusDto
 {
     public int Id { get; set; }
-    public ApplicationStatusType ApplicationStatusType { get; set; }
-    public string StatusName => ApplicationStatusType.GetDisplayName();
+    public CandidateStatusType CandidateStatusType { get; set; }
+    public string StatusName => CandidateStatusType.GetDisplayName();
     public DateTime ChangeTime { get; set; }
     public int OfficeId { get; set; }
     public OfficeDto Office { get; set; }

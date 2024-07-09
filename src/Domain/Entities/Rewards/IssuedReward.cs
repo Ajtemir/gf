@@ -5,7 +5,7 @@ namespace Domain.Entities;
 
 public class IssuedReward
 {
-    [Key,ForeignKey((nameof(RewardApplicationStatus)))]
-    public int RewardApplicationStatusId { get; set; }
-    public ApplicationStatus? RewardApplicationStatus { get; set; }
+    [Key,ForeignKey((nameof(CandidateStatus)))]
+    public int CandidateStatusId { get; set; }
+    public CandidateStatus? CandidateStatus { get; set; }
 }

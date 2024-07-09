@@ -18,6 +18,5 @@ public class Application : BaseAuditableEntity
     
     public ApplicationUser? CreatedByUser { get; set; }
     public ApplicationUser? ModifiedByUser { get; set; }
-    public ICollection<ApplicationStatus> RewardApplicationStatuses { get; set; } = new List<ApplicationStatus>();
-    public ICollection<ApplicationDocument> ApplicationDocuments { get; set; } = new List<ApplicationDocument>();
+    
 }

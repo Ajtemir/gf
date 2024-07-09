@@ -9,15 +9,15 @@ public static partial class Seed
 {
     private static void StatusSeed(this ModelBuilder builder)
     {
-        builder.Entity<ApplicationStatus>().HasData(
-            new ApplicationStatus
+        builder.Entity<CandidateStatus>().HasData(
+            new CandidateStatus
             {   
-                Status = ApplicationStatusType.Saved,
+                Status = CandidateStatusType.Saved,
                 OfficeId = Secretariat.Id,
                 Id = 1,
                 ChangeDate = DateTime.Today.SetKindUtc(),
                 PreviousStatusId = null,
-                ApplicationId = 1,
+                CandidateId = 1,
                 UserId = 1,
             }
         );

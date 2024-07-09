@@ -18,7 +18,7 @@ public class Document
     public string? Extension => Path.GetExtension(this.Name)?.Remove(0,1);
     public string? ContentType => Extension is null ? null : $"application/${Extension}";
     public ChildDocument ChildDocument { get; set; } = null!;
-    public ApplicationDocument ApplicationDocument { get; set; } = null!;
+    public CandidateDocument CandidateDocument { get; set; } = null!;
     public void Reset()
     {
         this.Bytes = null;

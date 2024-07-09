@@ -2,12 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Entities;
-[PrimaryKey(nameof(ApplicationId), nameof(DocumentId))]
-public class ApplicationDocument
+[PrimaryKey(nameof(CandidateId), nameof(DocumentId))]
+public class CandidateDocument
 {
-    [ForeignKey(nameof(Application))]
-    public int ApplicationId { get; set; }
-    public Application Application { get; set; } = null!;
+    [ForeignKey(nameof(Candidate))]
+    public int CandidateId { get; set; }
+    public Candidate Candidate { get; set; } = null!;
     [ForeignKey(nameof(Document))]
     public int DocumentId { get; set; }
     public Document Document { get; set; } = null!;

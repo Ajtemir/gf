@@ -12,7 +12,7 @@ public static partial class Seed
         );
     }
 
-    private static Avatar FirstAvatar => new Avatar
+    private static Avatar FirstAvatar => new()
     {
         Id = 1,
         Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Avatars", "1.jpg")),

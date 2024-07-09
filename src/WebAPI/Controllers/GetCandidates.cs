@@ -1,5 +1,6 @@
 ﻿using Application.Common.Dto;
 using Application.Common.Extensions;
+using Application.Common.MappingProfiles;
 using AutoMapper.QueryableExtensions;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -14,10 +15,23 @@ public partial class CandidatesController
     [AllowAnonymous]
     public async Task<ActionResult> GetCandidates([FromQuery]GetCandidatesArgument argument)
     {
-        var candidates = await _context.PersonCandidates.Include(x=>x.Person)
-            .Where(x => (argument.Pin == null || (x.Person.Pin != null && x.Person.Pin.Contains(argument.Pin)))
-                && (argument.Fullname == null || (x.Person.LastName + ' ' + x.Person.FirstName + ' ' + x.Person.PatronymicName).Contains(argument.Fullname)))
-            .ProjectTo<PersonCandidateDto>(_mapper.ConfigurationProvider)
+        var candidates = await _context.Candidates
+            .Include(x=>((PersonCandidate)x).Person)
+            .Include(x=>((Entity)x).PinEntity)
+            .Where(x => 
+                (
+                    (argument.Pin == null || ((PersonCandidate)x).Person.Pin != null && ((PersonCandidate)x).Person.Pin!.Contains(argument.Pin))
+                    ||
+                    (argument.Pin == null || ((Entity)x).PinEntity.Pin != null && ((Entity)x).PinEntity.Pin!.Contains(argument.Pin))
+                )
+                && 
+                (
+                    (argument.Fullname == null || (((PersonCandidate)x).Person.LastName + ' ' + ((PersonCandidate)x).Person.FirstName + ' ' + ((PersonCandidate)x).Person.PatronymicName).Contains(argument.Fullname))
+                    ||
+                    (argument.Fullname == null || ((Entity)x).NameKg.Contains(argument.Fullname) || ((Entity)x).NameRu.Contains(argument.Fullname))
+                )
+            )
+            .ProjectTo<CandidateListItemDto>(_mapper.ConfigurationProvider)
             .ToPaginatedListAsync(argument.PageNumber, argument.PageSize);
         return Ok(candidates);
     }

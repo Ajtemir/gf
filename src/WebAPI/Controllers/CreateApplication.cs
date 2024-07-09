@@ -17,16 +17,16 @@ public partial class ApplicationsController
             RewardId = argument.RewardId,
             SpecialAchievements = argument.SpecialAchievements,
         };
-        await _context.RewardApplications.AddAsync(application);
-        await _context.SaveChangesAsync();
+        // await _context.RewardApplications.AddAsync(application);
+        // await _context.SaveChangesAsync();
         var officeId = UserOfficeId;
-        var createdStatus = new ApplicationStatus
+        var createdStatus = new CandidateStatus
         {
             ChangeDate = DateTime.Now.SetKindUtc(),
-            ApplicationId = application.Id,
+            CandidateId = application.Id,
             OfficeId = officeId,
             PreviousStatusId = null,
-            Status = ApplicationStatusType.Saved,
+            Status = CandidateStatusType.Saved,
         };
         await _context.RewardApplicationStatuses.AddAsync(createdStatus);
         await _context.SaveChangesAsync();
@@ -39,9 +39,9 @@ public partial class ApplicationsController
 
         await _context.Documents.AddRangeAsync(documents);
         await _context.SaveChangesAsync();
-        await _context.ApplicationDocuments.AddRangeAsync(documents.Select(x=> new ApplicationDocument
+        await _context.ApplicationDocuments.AddRangeAsync(documents.Select(x=> new CandidateDocument
         {
-            ApplicationId = application.Id,
+            CandidateId = application.Id,
             DocumentId = x.Id,
         }));
         await _context.SaveChangesAsync();

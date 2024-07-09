@@ -18,7 +18,6 @@ public class CandidateProfile : Profile
             .ForMember(d => d.CandidateType, c => c.MapFrom(s => s.CandidateTypeId))
             .ForMember(d => d.Image, c => c.MapFrom(s => s.Image == null ? null : Convert.ToBase64String(s.Image)))
             .ForMember(d => d.CreatedByUser, c => c.MapFrom(MapCreatedByUser()))
-            .ForMember(d => d.ApplicationId, c => c.MapFrom(s => s.Application!.Id))
             .ForMember(d => d.ModifiedByUser, c => c.MapFrom(MapModifiedByUser()));
         
         CreateMap<Citizen, CitizenDto>()

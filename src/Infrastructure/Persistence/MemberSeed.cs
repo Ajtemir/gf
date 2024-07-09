@@ -11,7 +11,12 @@ public static partial class Seed
     {
         builder.Entity<Person>().HasData(
             KaldarbekovaBermetMember,
-            AytemirUlanbekUuluMember
+            AytemirUlanbekUuluMember,
+            MehmetKenanDonmezMember
+        );
+
+        builder.Entity<PinEntity>().HasData(
+            InfocomEntityMember
         );
     }
 
@@ -26,7 +31,7 @@ public static partial class Seed
         FirstName = "Bermet",
         PassportSeriesNumber = "id3232",
         RegisteredAddress = "Archa Beshik",
-        BirthDate = DateOnly.FromDateTime(DateTime.Now),
+        BirthDate = DateOnly.Parse("18.08.1975"),
     };
     
     private static Person AytemirUlanbekUuluMember => new ()
@@ -38,5 +43,28 @@ public static partial class Seed
         Gender = Gender.Male,
         PassportSeriesNumber = "A23423",
         RegisteredAddress = "dsgdsfg",
+        Avatar = null,
+        BirthDate = DateOnly.Parse("18.08.2001"),
+    };
+    
+    private static Person MehmetKenanDonmezMember => new ()
+    {
+        Id = 3,
+        Pin = "22604197550012",
+        LastName = "Donmez",
+        FirstName = "Mehmet Kenan",
+        Gender = Gender.Male,
+        PassportSeriesNumber = "A23423",
+        RegisteredAddress = "dsgdsfg",
+        Avatar = null,
+        BirthDate = DateOnly.Parse("26.04.1875"),
+    };
+    
+    private static PinEntity InfocomEntityMember => new ()
+    {
+        Id = 4,
+        Pin = "01211200710029",
+        Avatar = null,
+        
     };
 }
