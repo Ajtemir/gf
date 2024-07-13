@@ -19,6 +19,7 @@ public partial class MembersController
         person.RegisteredAddress = argument.RegisteredAddress;
         person.PassportSeriesNumber = argument.PassportSeriesNumber;
         person.BirthDate = argument.BirthDate;
+        person.DeathDate = argument.DeathDate;
         await _context.SaveChangesAsync();
         return Ok(person);
     }

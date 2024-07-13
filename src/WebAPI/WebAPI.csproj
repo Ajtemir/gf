@@ -73,7 +73,7 @@
       <Compile Update="Controllers\GetDocumentsByChildId.cs">
         <DependentUpon>DocumentsController.cs</DependentUpon>
       </Compile>
-      <Compile Update="Controllers\CreateMember.cs">
+      <Compile Update="Controllers\CreatePersonMember.cs">
         <DependentUpon>MembersController.cs</DependentUpon>
       </Compile>
       <Compile Update="Controllers\GetPersonDataByPin.cs">

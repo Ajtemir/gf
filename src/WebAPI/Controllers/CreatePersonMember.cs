@@ -9,7 +9,7 @@ namespace WebAPI.Controllers;
 public partial class MembersController
 {
     [HttpPost]
-    public async Task<ActionResult> Create([FromBody] CreateMemberArgument argument)
+    public async Task<ActionResult> CreatePersonMember([FromBody] CreatePersonMemberArgument argument)
     {
         if (argument.Pin != null)
             await _context.Members.ErrorIfExistsAsync(x => x.Pin == argument.Pin, errorMessage: $"Найдена запись с таким ПИНом : {argument.Pin}");
@@ -31,6 +31,7 @@ public partial class MembersController
             Pin = argument.Pin,
             BirthDate = argument.BirthDate,
             AvatarId = avatar.Id,
+            DeathDate = argument.DeathDate,
         };
         await _context.Persons.AddAsync(person);
         await _context.SaveChangesAsync();
@@ -38,7 +39,7 @@ public partial class MembersController
     }
 }
 
-public class CreateMemberArgument
+public class CreatePersonMemberArgument
 {
     public string? Pin { get; set; }
     public required string LastName { get; set; }
