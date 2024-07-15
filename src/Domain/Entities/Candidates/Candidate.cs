@@ -12,6 +12,8 @@ public abstract class Candidate : BaseAuditableEntity
     [ForeignKey(nameof(CandidateType))]
     public string CandidateTypeId { get; set; } = null!;
     public CandidateType CandidateType { get; set; } = null!;
+    public int? AvatarId { get; set; }
+    public Avatar? Avatar { get; set; }
     [JsonIgnore]
     public byte[]? Image { get; set; }
     public string? ImageName { get; set; }

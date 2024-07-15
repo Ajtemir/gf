@@ -1,6 +1,7 @@
 using Application.Common.Dto;
 using Application.Rewards.Commands;
 using Application.Rewards.Queries;
+using AutoMapper;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,21 +10,14 @@ namespace WebAPI.Controllers;
 
 [Authorize]
 [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-public partial class RewardsController : ApiControllerBase
+public partial class RewardsController : BaseController
 {
-    private readonly ApplicationDbContext _context;
-
-    public RewardsController(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-
-    [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<RewardDto>>> GetRewards(CancellationToken cancellationToken)
-    {
-        return Ok(await Mediator.Send(new GetRewardListQuery(), cancellationToken));
-    }
+    // [HttpGet]
+    // [ProducesResponseType(StatusCodes.Status200OK)]
+    // public async Task<ActionResult<IEnumerable<RewardDto>>> GetRewards(CancellationToken cancellationToken)
+    // {
+    //     return Ok(await Mediator.Send(new GetRewardListQuery(), cancellationToken));
+    // }
 
     [HttpGet("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -68,5 +62,9 @@ public partial class RewardsController : ApiControllerBase
     {
         await Mediator.Send(new DeleteRewardCommand { Id = id }, cancellationToken);
         return NoContent();
+    }
+
+    public RewardsController(ApplicationDbContext context, IMapper mapper) : base(context, mapper)
+    {
     }
 }

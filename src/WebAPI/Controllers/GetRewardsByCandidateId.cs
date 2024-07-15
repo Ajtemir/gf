@@ -8,7 +8,7 @@ namespace WebAPI.Controllers;
 
 public partial class RewardsController
 {
-    [HttpGet("[action]")]
+    [HttpGet]
     [AllowAnonymous]
     public async Task<ActionResult> GetRewardsByCandidateId([FromQuery]int candidateId)
     {

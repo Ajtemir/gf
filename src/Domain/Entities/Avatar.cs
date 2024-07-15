@@ -12,4 +12,6 @@ public class Avatar
     public string? ImageName { get; set; }
     public string? Extension => Path.GetExtension(this.ImageName)?.Remove(0,1);
     public string? ContentType => string.IsNullOrWhiteSpace(Extension) ? null : $"image/{Extension}";
+    public Candidate? Candidate { get; set; }
+    public Member? Member { get; set; }
 }

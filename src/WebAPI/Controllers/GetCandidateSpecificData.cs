@@ -19,7 +19,6 @@ public partial class CandidatesController
             CandidateTypes.Citizen => Ok(await _context.Citizens.Select(x => new
                 {
                     x.Id,
-                    x.Education,
                     x.EducationId,
                     x.ScienceDegree,
                     x.YearsOfWorkTotal,

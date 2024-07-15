@@ -124,6 +124,15 @@
       <Compile Update="Controllers\GetCandidateAvatar.cs">
         <DependentUpon>CandidatesController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\GetRewards.cs">
+        <DependentUpon>RewardsController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\CreateCandidate.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Controllers\GetCandidate.cs">
+        <DependentUpon>CandidatesController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

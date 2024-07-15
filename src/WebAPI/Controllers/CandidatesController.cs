@@ -7,11 +7,13 @@ using Application.Entities.Queries;
 using Application.Foreigners.Queries;
 using Application.Mothers.Queries;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Domain.Entities;
 using Domain.Enums;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Extensions;
 
 namespace WebAPI.Controllers;
@@ -42,8 +44,8 @@ public partial class CandidatesController : BaseApiController
             nameof(Entity) => await Mediator.Send(new GetEntityQuery { Id = id }, cancellationToken),
             _ => throw new InvalidEnumArgumentException($"Invalid {nameof(Candidate.CandidateTypeId)}: {candidateType}")
         };
-
-        return Ok(candidateDto);
+        var result = await _context.Candidates.ProjectTo<CandidateDto>(_mapper.ConfigurationProvider).FirstOrDefaultAsync(x => x.Id == id, cancellationToken: cancellationToken);
+        return Ok(result);
     }
 
     [HttpDelete("{id:int}")]
